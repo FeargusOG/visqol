@@ -81,6 +81,7 @@ cc_library(
         "@boost//:filesystem",
         "@boost//:system",
         "@com_google_protobuf//:protobuf_lite",
+        "@mmd_vector//:mmd-vector",
     ],
 )
 

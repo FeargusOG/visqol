@@ -6,6 +6,13 @@ load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "new_git_repository")
 load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 
+# Memory Mapped Vector
+git_repository(
+    name = "mmd_vector",
+    remote = "https://github.com/FeargusOG/mmd-vector.git",
+    commit = "6aa61df8ee7e27c7af796e125d2d580f57900dcb",
+)
+
 # GoogleTest/GoogleMock framework.
 git_repository(
     name = "com_google_googletest",
