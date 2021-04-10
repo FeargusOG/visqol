@@ -75,6 +75,9 @@ AMatrix<std::complex<double>> FastFourierTransform::Forward1d(
   // append zeros to matrix until it's the same size as points
   AMatrix<double> signal = in_matrix;
   signal.Resize(points, signal.NumCols());
+  std::cout<<"NumElements() of signal: "<<signal.NumElements()<<std::endl;
+  std::cout<<"NumElements() of in_matrix: "<<in_matrix.NumElements()<<std::endl;
+  std::cout<<"Points: "<<points<<std::endl;
   for (size_t i = in_matrix.NumRows(); i < points; i++) {
     signal(i, 0) = 0.0;
   }

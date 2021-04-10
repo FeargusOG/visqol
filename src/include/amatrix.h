@@ -20,7 +20,7 @@
 #include <vector>
 #include <valarray>
 #include <memory>
-
+#include <mmd-vector.h>
 #include "absl/types/span.h"
 #define ARMA_64BIT_WORD
 #include <armadillo>
@@ -118,6 +118,7 @@ class AMatrix {
   T *mutData() const;  // bit of a hack
 
  private:
+  mmd::MmdVector<T> vec_;
   arma::Mat<T> matrix_;
 };
 }  // namespace Visqol

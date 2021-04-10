@@ -83,7 +83,8 @@ std::vector<double> XCorr::CalcInverseFFTPwiseProd(
 AMatrix<std::complex<double>> XCorr::CalcFFTPwiseProd(
     const std::vector<double> &signal_1, const std::vector<double> &signal_2,
     const std::unique_ptr<FftManager>& fft_manager, const size_t fft_points) {
-
+std::cout<<"signal_1.size(): "<<signal_1.size()<<std::endl;
+std::cout<<"signal_2.size(): "<<signal_2.size()<<std::endl;
   auto fftsignal_2 = FastFourierTransform::Forward1d(fft_manager,
                                                      signal_2,
                                                      fft_points);
