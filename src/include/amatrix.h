@@ -43,12 +43,15 @@ template <typename T>
 class AMatrix {
  public:
   AMatrix<T>() {}
+  ~AMatrix<T>();
   AMatrix<T>(const arma::Mat<T> &mat);
   AMatrix<T>(const AMatrix<T> &other);
   AMatrix<T>(const std::vector<T> &col);
+  AMatrix<T>(const std::vector<T> &col, const bool use_memory_mapping);
   AMatrix<T>(const absl::Span<T>& col);
   AMatrix<T>(const std::valarray<T> &va);
   AMatrix<T>(const std::vector<std::vector<T>> &vecOfCols);
+  AMatrix<T>(const std::size_t mmd_size);
   AMatrix<T>(size_t rows, size_t cols);
   AMatrix<T>(size_t rows, size_t cols, std::vector<T> &&data);
   AMatrix<T>(size_t rows, size_t cols, const std::vector<T> &data);
@@ -118,7 +121,7 @@ class AMatrix {
   T *mutData() const;  // bit of a hack
 
  private:
-  mmd::MmdVector<T> vec_;
+  mmd::MmdVector<T>* vec_ = nullptr;
   arma::Mat<T> matrix_;
 };
 }  // namespace Visqol

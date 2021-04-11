@@ -24,6 +24,13 @@
 
 namespace Visqol {
 template <typename T>
+inline AMatrix<T>::~AMatrix() {
+  if (vec_ != nullptr) {
+    delete vec_;
+  }
+}
+
+template <typename T>
 inline AMatrix<T>::AMatrix(const AMatrix<T>& other) {
   matrix_ = arma::Mat<T>(other.matrix_);
 }
@@ -34,15 +41,22 @@ inline AMatrix<T>::AMatrix(const arma::Mat<T>& mat) {
 }
 
 template <typename T>
-inline AMatrix<T>::AMatrix(const std::vector<T>& col) : vec_{col}, matrix_{vec_.get_memory(), col.size(), 1, false, true} {
-  std::cout<<"Creating a matrix from vec of size: "<<col.size()<<std::endl;
-  std::cout<<"Num Elem 1: "<<matrix_.n_elem<<std::endl;
-  // std::vector<T> big_vector(0);
-  // T* mem_vec = big_vector.data();
-  //T* mem = vec_.get_memory();
-  //matrix_ = arma::Mat<T>(vec_.get_memory(), col.size(), 1, false, true); 
-  // matrix_ = arma::Mat<T>(col);
-  // std::cout<<"Num Elem 2: "<<matrix_.n_elem<<std::endl;
+inline AMatrix<T>::AMatrix(const std::vector<T>& col) {
+  matrix_ = arma::Mat<T>(col);
+}
+
+template <typename T>
+inline AMatrix<T>::AMatrix(const std::vector<T>& col, const bool use_memory_mapping) : vec_{new mmd::MmdVector<T>{col}} , matrix_{vec_->get_memory(), col.size(), 1, false, true} {
+  std::cout<<"Using memory mapping!"<<std::endl;
+  std::cout<<"Vec file size: "<<vec_->get_file_size()<<std::endl;
+  std::cout<<"Vec file path: "<<vec_->get_file_path()<<std::endl;
+}
+
+template <typename T>
+inline AMatrix<T>::AMatrix(const std::size_t mmd_size) : vec_{new mmd::MmdVector<T>{mmd_size}} , matrix_{vec_->get_memory(), mmd_size, 1, false, true} {
+  std::cout<<"Vec file size: "<<vec_->get_file_size()<<std::endl;
+  std::cout<<"Vec file path: "<<vec_->get_file_path()<<std::endl;
+  std::cout<<"Using memory mapping - ctor 2!!"<<std::endl;
 }
 
 template <typename T>

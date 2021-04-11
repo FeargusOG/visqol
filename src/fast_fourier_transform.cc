@@ -18,7 +18,7 @@
 #include <iterator>
 #include <memory>
 #include <vector>
-
+#include <iostream>
 #include "amatrix.h"
 
 namespace Visqol {
@@ -72,17 +72,26 @@ AMatrix<std::complex<double>> FastFourierTransform::Forward1d(
     const std::unique_ptr<FftManager> &fft_manager,
     const AMatrix<double> &in_matrix,
     const size_t points) {
-  // append zeros to matrix until it's the same size as points
-  AMatrix<double> signal = in_matrix;
-  signal.Resize(points, signal.NumCols());
-  std::cout<<"NumElements() of signal: "<<signal.NumElements()<<std::endl;
-  std::cout<<"NumElements() of in_matrix: "<<in_matrix.NumElements()<<std::endl;
-  std::cout<<"Points: "<<points<<std::endl;
-  for (size_t i = in_matrix.NumRows(); i < points; i++) {
-    signal(i, 0) = 0.0;
-  }
+  if (points >= 2097152) {
+    AMatrix<double> signal_mmd{points};
+    std::cout<<"Finished making signal_mmd"<<std::endl;
 
-  return Forward1d(fft_manager, signal);
+    for (size_t i = 0; i < in_matrix.NumRows(); i++) {
+      double tmp = in_matrix.GetRow(i).at(0);
+      signal_mmd(i, 0) = tmp;
+    }
+    std::cout<<"Finished copying"<<std::endl;
+
+    return Forward1d(fft_manager, signal_mmd);
+  } else {
+    // append zeros to matrix until it's the same size as points
+    AMatrix<double> signal = in_matrix;
+    signal.Resize(points, signal.NumCols());
+    for (size_t i = in_matrix.NumRows(); i < points; i++) {
+      signal(i, 0) = 0.0;
+    }
+    return Forward1d(fft_manager, signal);
+  }
 }
 
 AMatrix<std::complex<double>> FastFourierTransform::Inverse1d(

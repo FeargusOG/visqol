@@ -10,7 +10,7 @@ load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
 git_repository(
     name = "mmd_vector",
     remote = "https://github.com/FeargusOG/mmd-vector.git",
-    commit = "cf143ed4892e766e5c181ae85d8731c11e9eaf10",
+    commit = "4f39dbebf6a8521a25d9f843db14723a09ff6f1c",
 )
 
 # GoogleTest/GoogleMock framework.
