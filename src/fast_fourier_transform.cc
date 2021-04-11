@@ -72,7 +72,7 @@ AMatrix<std::complex<double>> FastFourierTransform::Forward1d(
     const std::unique_ptr<FftManager> &fft_manager,
     const AMatrix<double> &in_matrix,
     const size_t points) {
-  if (points >= 2097152) {
+  if (points >= 2097152) { // TODO Fix this here to be something sensible... FOG
     AMatrix<double> signal_mmd{points};
     std::cout<<"Finished making signal_mmd"<<std::endl;
 
