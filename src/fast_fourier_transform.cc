@@ -133,6 +133,11 @@ AMatrix<std::complex<double>> FastFourierTransform::Inverse1d(
     out_cmplx_vector.push_back(cplx_num);
   }
 
+  // FOG TODO Here is one location - and it looks like the one to start with...
+  // But one thing to bear in mind here, is that we return it, so either alloc it
+  // with new and return a pointer, or look into the copy constuctor stuff...
+  // Alloc with new and pointer is prob nice (or pass in the matrix!) but need to
+  // make sure to delete it!!
   AMatrix<std::complex<double>> out_matrix(out_cmplx_vector.size(),
     in_matrix.NumCols(), out_cmplx_vector);
   return out_matrix;
