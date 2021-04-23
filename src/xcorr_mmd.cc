@@ -80,7 +80,7 @@ mmd::MmdVector<double> XCorrMmd::CalcInverseFFTPwiseProd(
 
   // FOG instead of calling ToVector, can I just return the inner vector and allow it to be copied by the mmd-vector copy-ctor??
   auto i1d =  FastFourierTransformMmd::Inverse1dConjSym(fft_manager, *pwise_prod);
-  auto vec = i1d->ToVector();
+  auto vec = i1d->ToMmdVector();
   delete pwise_prod;
   delete i1d;
   return vec;

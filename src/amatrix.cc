@@ -385,6 +385,11 @@ inline std::vector<T> AMatrix<T>::ToVector() const {
 }
 
 template <typename T>
+inline mmd::MmdVector<T> AMatrix<T>::ToMmdVector() const {
+  return *vec_;
+}
+
+template <typename T>
 inline std::valarray<T> AMatrix<T>::ToValArray() const {
   std::vector<T> v = arma::conv_to<std::vector<T>>::from(matrix_.col(0));
   return std::valarray<T>(v.data(), v.size());

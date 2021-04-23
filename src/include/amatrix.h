@@ -106,6 +106,7 @@ class AMatrix {
   size_t NumElements() const;
 
   std::vector<T> ToVector() const;
+  mmd::MmdVector<T> ToMmdVector() const;
   std::valarray<T> ToValArray() const;
 
   // hack to access private member
