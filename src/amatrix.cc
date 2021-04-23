@@ -195,6 +195,7 @@ inline AMatrix<T> AMatrix<T>::PointWiseProduct(const AMatrix<T>& m) const {
 
 template <typename T>
 inline AMatrix<T>* AMatrix<T>::PointWiseProduct(const AMatrix<T>* m) const {
+  //FOG This right here is responsible for about 25% of the peak!
   return new AMatrix<T>(std::move(matrix_ % m->matrix_));
 }
 
@@ -379,6 +380,7 @@ inline const arma::Mat<T>& AMatrix<T>::GetArmaMat() const {
 
 template <typename T>
 inline std::vector<T> AMatrix<T>::ToVector() const {
+  //FOG Right here, another 16% of peak!
   return arma::conv_to<std::vector<T>>::from(matrix_.col(0));
 }
 

@@ -89,8 +89,6 @@ AMatrix<std::complex<double>> XCorr::CalcFFTPwiseProd(
   std::transform(fftsignal_2.begin(), fftsignal_2.end(),
                  fftsignal_2.begin(), [](decltype(*fftsignal_2.begin())& s)
                  { return conj(s); });
-
-  // FOG TODO Here is one location - the PointWiseProduct function allocs a new one.
   auto pwp = FastFourierTransform::Forward1d(fft_manager, signal_1, fft_points)
       .PointWiseProduct(fftsignal_2);
   return pwp;

@@ -97,7 +97,6 @@ mmd::MmdVector<double> XCorrMmd::CalcInverseFFTPwiseProd(
             fftsignal_2->begin(), [](decltype(*fftsignal_2->begin())& s)
             { return conj(s); });
 
-  // FOG TODO Here is one location - the PointWiseProduct function allocs a new one.
   auto f1d = FastFourierTransformMmd::Forward1d(fft_manager, signal_1, fft_points);
   auto pwp = f1d->PointWiseProduct(fftsignal_2);
   delete f1d;

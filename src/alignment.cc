@@ -62,12 +62,11 @@ std::tuple<AudioSignal, double> Alignment::GloballyAlign(
   auto ref_upper_env = Envelope::CalcUpperEnv(ref_matrix);
   auto deg_upper_env = Envelope::CalcUpperEnv(deg_matrix);
 
-  // FOG - right here is the route of all evil lol
+  // FOG Find a sensible way to gate this. Prob the initial call stack route.
+  //     Or, simply the first time through here (which is when it is big.)
   int64_t best_lag;
   if(ref_matrix.NumElements() >= 597784){
-    //std::cout<<"Gonna use MMD!"<<std::endl;
     best_lag = XCorrMmd::CalcBestLag(ref_upper_env, deg_upper_env);
-    //best_lag = XCorr::CalcBestLag(ref_upper_env, deg_upper_env);
   } else {
     best_lag = XCorr::CalcBestLag(ref_upper_env, deg_upper_env);
   }
