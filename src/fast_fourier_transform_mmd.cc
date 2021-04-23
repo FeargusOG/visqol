@@ -56,15 +56,13 @@ AMatrix<std::complex<double>>* FastFourierTransformMmd::Forward1d(
 
   // Mirror the freq domain complex vector. Do not add the 0hz or
   // Nyquist bins to the mirror.
-  for (int i = freq_cplx_vector.get_mapped_vector()->size() - 2; i > 0; i--) {
+  for (int i = freq_cplx_vector.size() - 2; i > 0; i--) {
     freq_cplx_vector.push_back(std::complex<double>{freq_cplx_vector[i].real(),
         freq_cplx_vector[i].imag() * -1});
   }
 
   // Create a Matrix to return with the mirrored freq domain.
-  // std::cout<<"****** Rows: "<<freq_cplx_vector.get_mapped_vector()->size()<<std::endl;
-  // std::cout<<"****** Cols: "<<in_matrix.NumCols()<<std::endl;
-  return new AMatrix<std::complex<double>>(freq_cplx_vector.get_mapped_vector()->size(),
+  return new AMatrix<std::complex<double>>(freq_cplx_vector.size(),
       in_matrix.NumCols(), freq_cplx_vector);
 }
 
@@ -119,7 +117,7 @@ AMatrix<std::complex<double>>* FastFourierTransformMmd::Inverse1d(
     out_cmplx_vector.push_back(cplx_num);
   }
 
-  return new AMatrix<std::complex<double>>(out_cmplx_vector.get_mapped_vector()->size(),
+  return new AMatrix<std::complex<double>>(out_cmplx_vector.size(),
       in_matrix.NumCols(), out_cmplx_vector);
 }
 
@@ -136,7 +134,7 @@ AMatrix<double>* FastFourierTransformMmd::Inverse1dConjSym(
 
   delete cmplx_inv;
 
-  return new AMatrix<double>(out_double_vector.get_mapped_vector()->size(),
+  return new AMatrix<double>(out_double_vector.size(),
     in_matrix.NumCols(), out_double_vector);
 }
 }  // namespace Visqol
