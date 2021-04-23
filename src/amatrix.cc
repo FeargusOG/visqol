@@ -195,8 +195,19 @@ inline AMatrix<T> AMatrix<T>::PointWiseProduct(const AMatrix<T>& m) const {
 
 template <typename T>
 inline AMatrix<T>* AMatrix<T>::PointWiseProduct(const AMatrix<T>* m) const {
-  //FOG This right here is responsible for about 25% of the peak!
-  return new AMatrix<T>(std::move(matrix_ % m->matrix_));
+  std::cout<<"THIS: "<<this->NumElements()<<std::endl;
+  std::cout<<"THIS ROWS: "<<this->NumRows()<<std::endl;
+  std::cout<<"OTHER: "<<m->NumElements()<<std::endl;
+  std::cout<<"OTHER ROWS: "<<m->NumRows()<<std::endl;
+  //FOG maybe create a matrix, copy to it, and return that...
+  // Assume 1 col
+  auto pwp = new AMatrix<T>(this->NumRows());
+  for (size_t i = 0; i < this->NumRows(); i++)
+  {
+    pwp->operator()(i) = this->operator()(i, 0) * m->operator()(i, 0);
+  }
+  return pwp;
+  //return new AMatrix<T>(std::move(matrix_ % m->matrix_));
 }
 
 template <typename T>

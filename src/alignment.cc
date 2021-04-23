@@ -20,6 +20,7 @@
 #include "amatrix.h"
 #include "audio_signal.h"
 #include "envelope.h"
+#include "envelope_mmd.h"
 #include "xcorr.h"
 #include "xcorr_mmd.h"
 
@@ -59,15 +60,17 @@ std::tuple<AudioSignal, double> Alignment::GloballyAlign(
     const AudioSignal &ref_signal, const AudioSignal &deg_signal) {
   auto &ref_matrix = ref_signal.data_matrix;
   auto &deg_matrix = deg_signal.data_matrix;
-  auto ref_upper_env = Envelope::CalcUpperEnv(ref_matrix);
-  auto deg_upper_env = Envelope::CalcUpperEnv(deg_matrix);
 
   // FOG Find a sensible way to gate this. Prob the initial call stack route.
   //     Or, simply the first time through here (which is when it is big.)
   int64_t best_lag;
   if(ref_matrix.NumElements() >= 597784){
+    auto ref_upper_env = EnvelopeMmd::CalcUpperEnv(ref_matrix);
+    auto deg_upper_env = EnvelopeMmd::CalcUpperEnv(deg_matrix);
     best_lag = XCorrMmd::CalcBestLag(ref_upper_env, deg_upper_env);
   } else {
+    auto ref_upper_env = Envelope::CalcUpperEnv(ref_matrix);
+    auto deg_upper_env = Envelope::CalcUpperEnv(deg_matrix);
     best_lag = XCorr::CalcBestLag(ref_upper_env, deg_upper_env);
   }
 

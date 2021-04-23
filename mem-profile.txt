@@ -1,590 +1,389 @@
 --------------------------------------------------------------------------------
 Command:            ./bazel-bin/visqol --reference_file ./testdata/conformance_testdata_subset/guitar48_stereo.wav --degraded_file ./testdata/conformance_testdata_subset/guitar48_stereo_64kbps_aac.wav
 Massif arguments:   (none)
-ms_print arguments: ./massif.out.107905
+ms_print arguments: ./massif.out.124867
 --------------------------------------------------------------------------------
 
 
     MB
-108.4^##                                                                      
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :                                                                     
-     |# :::::::@@:::::::::::::::::::::::::::@::::::                         : 
-     |# :: ::::@ : ::: : ::::: ::: ::: :::: @: :: ::::::::::::::::::::::@::@:@
-     |# :: ::::@ : ::: : ::::: ::: ::: :::: @: :: :: :: :: : : ::::: :::@::@:@
-     |# :: ::::@ : ::: : ::::: ::: ::: :::: @: :: :: :: :: : : ::::: :::@::@:@
-     |# :: ::::@ : ::: : ::::: ::: ::: :::: @: :: :: :: :: : : ::::: :::@::@:@
+75.74^  #                                                                     
+     |  #                                                                     
+     |  #                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#                                                                     
+     | :#:::::::::::::::@@::::::::::@@:::::::::::::::@:::::: :: :::::::::::::@
+     | :#: :: : ::: :: :@ :: : :::::@ ::: ::: : : :: @:: :: :: :::: ::: :: ::@
+     | :#: :: : ::: :: :@ :: : :::::@ ::: ::: : : :: @:: :: :: :::: ::: :: ::@
+     | :#: :: : ::: :: :@ :: : :::::@ ::: ::: : : :: @:: :: :: :::: ::: :: ::@
+     | :#: :: : ::: :: :@ :: : :::::@ ::: ::: : : :: @:: :: :: :::: ::: :: ::@
+     | :#: :: : ::: :: :@ :: : :::::@ ::: ::: : : :: @:: :: :: :::: ::: :: ::@
+     | :#: :: : ::: :: :@ :: : :::::@ ::: ::: : : :: @:: :: :: :::: ::: :: ::@
    0 +----------------------------------------------------------------------->Gi
-     0                                                                   491.4
+     0                                                                   492.3
 
-Number of snapshots: 76
- Detailed snapshots: [1 (peak), 8, 29, 54, 64, 74]
+Number of snapshots: 60
+ Detailed snapshots: [2 (peak), 13, 22, 33, 58]
 
 --------------------------------------------------------------------------------
   n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
 --------------------------------------------------------------------------------
   0              0                0                0             0            0
-  1  4,235,834,969      113,669,968      113,650,475        19,493            0
-99.98% (113,650,475B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
-->37.99% (43,188,224B) 0x1634A6: std::complex<double>* arma::memory::acquire<std::complex<double> >(unsigned long long) (memory.hpp:82)
-| ->37.99% (43,188,224B) 0x159F49: arma::Mat<std::complex<double> >::init_cold() (Mat_meat.hpp:220)
-|   ->23.23% (26,411,008B) 0x1526FA: arma::Mat<std::complex<double> >::Mat(std::complex<double> const*, unsigned long long, unsigned long long) (Mat_meat.hpp:1251)
-|   | ->23.23% (26,411,008B) 0x14B2BC: Visqol::AMatrix<std::complex<double> >::AMatrix(unsigned long, unsigned long, std::vector<std::complex<double>, std::allocator<std::complex<double> > > const&) (amatrix.cc:91)
-|   |   ->14.76% (16,777,216B) 0x1B8187: Visqol::FastFourierTransform::Forward1d(std::unique_ptr<Visqol::FftManager, std::default_delete<Visqol::FftManager> > const&, Visqol::AMatrix<double> const&) (fast_fourier_transform.cc:69)
-|   |   | ->14.76% (16,777,216B) 0x1A68BC: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:44)
-|   |   |   ->14.76% (16,777,216B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-|   |   |     ->14.76% (16,777,216B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|   |   |     | ->14.76% (16,777,216B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|   |   |     |   ->14.76% (16,777,216B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|   |   |     |     ->14.76% (16,777,216B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|   |   |     |       ->14.76% (16,777,216B) 0x12D194: main (main.cc:47)
-|   |   |     |         
-|   |   |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|   |   |     
-|   |   ->08.48% (9,633,792B) 0x1B865D: Visqol::FastFourierTransform::Inverse1d(std::unique_ptr<Visqol::FftManager, std::default_delete<Visqol::FftManager> > const&, Visqol::AMatrix<std::complex<double> > const&) (fast_fourier_transform.cc:127)
-|   |     ->08.48% (9,633,792B) 0x1A6B72: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:71)
-|   |       ->08.48% (9,633,792B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-|   |         ->08.48% (9,633,792B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|   |         | ->08.48% (9,633,792B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|   |         |   ->08.48% (9,633,792B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|   |         |     ->08.48% (9,633,792B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|   |         |       ->08.48% (9,633,792B) 0x12D194: main (main.cc:47)
-|   |         |         
-|   |         ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|   |         
-|   ->14.76% (16,777,216B) 0x152458: arma::Mat<std::complex<double> >::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
-|     ->14.76% (16,777,216B) 0x14B0C3: Visqol::AMatrix<std::complex<double> >::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
-|       ->14.76% (16,777,216B) 0x1A6AAD: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:66)
-|         ->14.76% (16,777,216B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-|           ->14.76% (16,777,216B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|           | ->14.76% (16,777,216B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|           |   ->14.76% (16,777,216B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|           |     ->14.76% (16,777,216B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|           |       ->14.76% (16,777,216B) 0x12D194: main (main.cc:47)
-|           |         
-|           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|           
-->25.33% (28,797,504B) 0x153C56: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
-| ->16.89% (19,198,336B) 0x14FB67: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
-| | ->16.89% (19,198,336B) 0x150099: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
-| |   ->16.89% (19,198,336B) 0x147BD8: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
-| |     ->16.89% (19,198,336B) 0x1AC427: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
-| |     | ->16.89% (19,198,336B) 0x1AC098: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
-| |     |   ->08.48% (9,633,792B) 0x138342: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
-| |     |   | ->08.48% (9,633,792B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| |     |   |   ->08.48% (9,633,792B) 0x12D194: main (main.cc:47)
+  1  9,941,778,005       71,024,120       71,004,716        19,404            0
+  2 16,027,437,017       79,416,704       79,393,291        23,413            0
+99.97% (79,393,291B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->63.38% (50,331,968B) 0x3C3139: pffft_aligned_malloc (pffft.c:254)
+| ->31.69% (25,166,016B) 0x1B57D7: Visqol::AudioChannel::Init(unsigned long) (audio_channel.h:45)
+| | ->10.56% (8,388,672B) 0x1B4832: Visqol::FftManager::FftManager(unsigned long) (fft_manager.cc:45)
+| | | ->10.56% (8,388,672B) 0x190382: absl::lts_2020_09_23::memory_internal::MakeUniqueResult<Visqol::FftManager>::scalar absl::lts_2020_09_23::make_unique<Visqol::FftManager, unsigned long const&>(unsigned long const&) (memory.h:170)
+| | | | ->10.56% (8,388,672B) 0x193740: Visqol::XCorrMmd::CalcInverseFFTPwiseProd(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:76)
+| | | |   ->10.56% (8,388,672B) 0x191F76: Visqol::XCorrMmd::CalcBestLag(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:38)
+| | | |     ->10.56% (8,388,672B) 0x141863: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:70)
+| | | |       ->10.56% (8,388,672B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+| | | |         ->10.56% (8,388,672B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| | | |           ->10.56% (8,388,672B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | | |             ->10.56% (8,388,672B) 0x12D1B4: main (main.cc:47)
+| | | |               
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->10.56% (8,388,672B) 0x1B484C: Visqol::FftManager::FftManager(unsigned long) (fft_manager.cc:46)
+| | | ->10.56% (8,388,672B) 0x190382: absl::lts_2020_09_23::memory_internal::MakeUniqueResult<Visqol::FftManager>::scalar absl::lts_2020_09_23::make_unique<Visqol::FftManager, unsigned long const&>(unsigned long const&) (memory.h:170)
+| | | | ->10.56% (8,388,672B) 0x193740: Visqol::XCorrMmd::CalcInverseFFTPwiseProd(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:76)
+| | | |   ->10.56% (8,388,672B) 0x191F76: Visqol::XCorrMmd::CalcBestLag(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:38)
+| | | |     ->10.56% (8,388,672B) 0x141863: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:70)
+| | | |       ->10.56% (8,388,672B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+| | | |         ->10.56% (8,388,672B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| | | |           ->10.56% (8,388,672B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | | |             ->10.56% (8,388,672B) 0x12D1B4: main (main.cc:47)
+| | | |               
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->10.56% (8,388,672B) 0x1B67A9: Visqol::FastFourierTransformMmd::Inverse1d(std::unique_ptr<Visqol::FftManager, std::default_delete<Visqol::FftManager> > const&, Visqol::AMatrix<std::complex<double> > const&) (fast_fourier_transform_mmd.cc:100)
+| | | ->10.56% (8,388,672B) 0x1B6A79: Visqol::FastFourierTransformMmd::Inverse1dConjSym(std::unique_ptr<Visqol::FftManager, std::default_delete<Visqol::FftManager> > const&, Visqol::AMatrix<std::complex<double> > const&) (fast_fourier_transform_mmd.cc:127)
+| | | | ->10.56% (8,388,672B) 0x193781: Visqol::XCorrMmd::CalcInverseFFTPwiseProd(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:82)
+| | | |   ->10.56% (8,388,672B) 0x191F76: Visqol::XCorrMmd::CalcBestLag(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:38)
+| | | |     ->10.56% (8,388,672B) 0x141863: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:70)
+| | | |       ->10.56% (8,388,672B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+| | | |         ->10.56% (8,388,672B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| | | |           ->10.56% (8,388,672B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | | |             ->10.56% (8,388,672B) 0x12D1B4: main (main.cc:47)
+| | | |               
+| | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | | 
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->21.13% (16,777,280B) 0x1B480F: Visqol::FftManager::FftManager(unsigned long) (fft_manager.cc:42)
+| | ->21.13% (16,777,280B) 0x190382: absl::lts_2020_09_23::memory_internal::MakeUniqueResult<Visqol::FftManager>::scalar absl::lts_2020_09_23::make_unique<Visqol::FftManager, unsigned long const&>(unsigned long const&) (memory.h:170)
+| | | ->21.13% (16,777,280B) 0x193740: Visqol::XCorrMmd::CalcInverseFFTPwiseProd(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:76)
+| | |   ->21.13% (16,777,280B) 0x191F76: Visqol::XCorrMmd::CalcBestLag(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:38)
+| | |     ->21.13% (16,777,280B) 0x141863: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:70)
+| | |       ->21.13% (16,777,280B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+| | |         ->21.13% (16,777,280B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| | |           ->21.13% (16,777,280B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |             ->21.13% (16,777,280B) 0x12D1B4: main (main.cc:47)
+| | |               
+| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| | 
+| ->10.56% (8,388,672B) 0x3D0221: pffft_new_setup (pffft.c:1220)
+|   ->10.56% (8,388,672B) 0x1B485F: Visqol::FftManager::FftManager(unsigned long) (fft_manager.cc:48)
+|     ->10.56% (8,388,672B) 0x190382: absl::lts_2020_09_23::memory_internal::MakeUniqueResult<Visqol::FftManager>::scalar absl::lts_2020_09_23::make_unique<Visqol::FftManager, unsigned long const&>(unsigned long const&) (memory.h:170)
+|     | ->10.56% (8,388,672B) 0x193740: Visqol::XCorrMmd::CalcInverseFFTPwiseProd(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:76)
+|     |   ->10.56% (8,388,672B) 0x191F76: Visqol::XCorrMmd::CalcBestLag(Visqol::AMatrix<double> const&, Visqol::AMatrix<double> const&) (xcorr_mmd.cc:38)
+|     |     ->10.56% (8,388,672B) 0x141863: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:70)
+|     |       ->10.56% (8,388,672B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+|     |         ->10.56% (8,388,672B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+|     |           ->10.56% (8,388,672B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+|     |             ->10.56% (8,388,672B) 0x12D1B4: main (main.cc:47)
+|     |               
+|     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|     
+->36.26% (28,797,504B) 0x153C80: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
+| ->24.17% (19,198,336B) 0x14FB33: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
+| | ->24.17% (19,198,336B) 0x150065: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
+| |   ->24.17% (19,198,336B) 0x147C92: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
+| |     ->24.17% (19,198,336B) 0x1AC321: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
+| |     | ->24.17% (19,198,336B) 0x1ABF92: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
+| |     |   ->12.13% (9,633,792B) 0x138362: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
+| |     |   | ->12.13% (9,633,792B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| |     |   |   ->12.13% (9,633,792B) 0x12D1B4: main (main.cc:47)
 | |     |   |     
-| |     |   ->08.41% (9,564,544B) 0x138329: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
-| |     |     ->08.41% (9,564,544B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| |     |       ->08.41% (9,564,544B) 0x12D194: main (main.cc:47)
+| |     |   ->12.04% (9,564,544B) 0x138349: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
+| |     |     ->12.04% (9,564,544B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| |     |       ->12.04% (9,564,544B) 0x12D1B4: main (main.cc:47)
 | |     |         
 | |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | |     
-| ->08.44% (9,599,168B) 0x14F33D: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
-|   ->04.24% (4,816,896B) 0x150E31: arma::Mat<double>::Mat<arma::Mat<double>, arma::eop_scalar_minus_post>(arma::eOp<arma::Mat<double>, arma::eop_scalar_minus_post> const&) (Mat_meat.hpp:4927)
-|   | ->04.24% (4,816,896B) 0x1480F1: Visqol::AMatrix<double>::operator-(double) const (amatrix.cc:178)
-|   |   ->04.24% (4,816,896B) 0x1A66C5: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:30)
-|   |     ->04.24% (4,816,896B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|   |     | ->04.24% (4,816,896B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|   |     |   ->04.24% (4,816,896B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|   |     |     ->04.24% (4,816,896B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|   |     |       ->04.24% (4,816,896B) 0x12D194: main (main.cc:47)
+| ->12.09% (9,599,168B) 0x14F309: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
+|   ->12.09% (9,599,168B) 0x150C59: arma::Mat<double>::Mat<arma::Mat<double>, arma::eop_scalar_plus>(arma::eOp<arma::Mat<double>, arma::eop_scalar_plus> const&) (Mat_meat.hpp:4927)
+|   | ->12.09% (9,599,168B) 0x147F97: Visqol::AMatrix<double>::operator+(double) const (amatrix.cc:168)
+|   |   ->12.09% (9,599,168B) 0x1BF76C: Visqol::EnvelopeMmd::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope_mmd.cc:38)
+|   |     ->06.07% (4,816,896B) 0x14184A: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:69)
+|   |     | ->06.07% (4,816,896B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+|   |     |   ->06.07% (4,816,896B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+|   |     |     ->06.07% (4,816,896B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+|   |     |       ->06.07% (4,816,896B) 0x12D1B4: main (main.cc:47)
 |   |     |         
-|   |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|   |     
-|   ->04.21% (4,782,272B) 0x150C8D: arma::Mat<double>::Mat<arma::Mat<double>, arma::eop_scalar_plus>(arma::eOp<arma::Mat<double>, arma::eop_scalar_plus> const&) (Mat_meat.hpp:4927)
-|   | ->04.21% (4,782,272B) 0x147EDD: Visqol::AMatrix<double>::operator+(double) const (amatrix.cc:168)
-|   |   ->04.21% (4,782,272B) 0x1A67B6: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:38)
-|   |     ->04.21% (4,782,272B) 0x1417F5: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:62)
-|   |       ->04.21% (4,782,272B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|   |         ->04.21% (4,782,272B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|   |           ->04.21% (4,782,272B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|   |             ->04.21% (4,782,272B) 0x12D194: main (main.cc:47)
+|   |     ->06.02% (4,782,272B) 0x141831: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:68)
+|   |       ->06.02% (4,782,272B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+|   |         ->06.02% (4,782,272B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+|   |           ->06.02% (4,782,272B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+|   |             ->06.02% (4,782,272B) 0x12D1B4: main (main.cc:47)
 |   |               
 |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 |   
-->20.57% (23,380,288B) 0x3C20FB: pffft_aligned_malloc (pffft.c:254)
-| ->09.50% (10,797,248B) 0x1B58DD: Visqol::AudioChannel::Init(unsigned long) (audio_channel.h:45)
-| | ->03.69% (4,194,368B) 0x1B4952: Visqol::FftManager::FftManager(unsigned long) (fft_manager.cc:46)
-| | | ->03.69% (4,194,368B) 0x1A75CF: absl::lts_2020_09_23::memory_internal::MakeUniqueResult<Visqol::FftManager>::scalar absl::lts_2020_09_23::make_unique<Visqol::FftManager, unsigned long>(unsigned long&&) (memory.h:170)
-| | |   ->03.69% (4,194,368B) 0x1A689C: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:42)
-| | |     ->03.69% (4,194,368B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-| | |       ->03.69% (4,194,368B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-| | |       | ->03.69% (4,194,368B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-| | |       |   ->03.69% (4,194,368B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | |       |     ->03.69% (4,194,368B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |       |       ->03.69% (4,194,368B) 0x12D194: main (main.cc:47)
-| | |       |         
-| | |       ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| | |       
-| | ->03.69% (4,194,368B) 0x1B8491: Visqol::FastFourierTransform::Inverse1d(std::unique_ptr<Visqol::FftManager, std::default_delete<Visqol::FftManager> > const&, Visqol::AMatrix<std::complex<double> > const&) (fast_fourier_transform.cc:105)
-| | | ->03.69% (4,194,368B) 0x1A6B72: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:71)
-| | |   ->03.69% (4,194,368B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-| | |     ->03.69% (4,194,368B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-| | |     | ->03.69% (4,194,368B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-| | |     |   ->03.69% (4,194,368B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | |     |     ->03.69% (4,194,368B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |     |       ->03.69% (4,194,368B) 0x12D194: main (main.cc:47)
-| | |     |         
-| | |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| | |     
-| | ->02.12% (2,408,512B) 0x1B4938: Visqol::FftManager::FftManager(unsigned long) (fft_manager.cc:45)
-| | | ->02.12% (2,408,512B) 0x1A75CF: absl::lts_2020_09_23::memory_internal::MakeUniqueResult<Visqol::FftManager>::scalar absl::lts_2020_09_23::make_unique<Visqol::FftManager, unsigned long>(unsigned long&&) (memory.h:170)
-| | |   ->02.12% (2,408,512B) 0x1A689C: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:42)
-| | |     ->02.12% (2,408,512B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-| | |       ->02.12% (2,408,512B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-| | |       | ->02.12% (2,408,512B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-| | |       |   ->02.12% (2,408,512B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | |       |     ->02.12% (2,408,512B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |       |       ->02.12% (2,408,512B) 0x12D194: main (main.cc:47)
-| | |       |         
-| | |       ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| | |       
-| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| | 
-| ->07.38% (8,388,672B) 0x1B4915: Visqol::FftManager::FftManager(unsigned long) (fft_manager.cc:42)
-| | ->07.38% (8,388,672B) 0x1A75CF: absl::lts_2020_09_23::memory_internal::MakeUniqueResult<Visqol::FftManager>::scalar absl::lts_2020_09_23::make_unique<Visqol::FftManager, unsigned long>(unsigned long&&) (memory.h:170)
-| |   ->07.38% (8,388,672B) 0x1A689C: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:42)
-| |     ->07.38% (8,388,672B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-| |       ->07.38% (8,388,672B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-| |       | ->07.38% (8,388,672B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-| |       |   ->07.38% (8,388,672B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| |       |     ->07.38% (8,388,672B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| |       |       ->07.38% (8,388,672B) 0x12D194: main (main.cc:47)
-| |       |         
-| |       ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| |       
-| ->03.69% (4,194,368B) 0x3CF1E3: pffft_new_setup (pffft.c:1220)
-|   ->03.69% (4,194,368B) 0x1B4965: Visqol::FftManager::FftManager(unsigned long) (fft_manager.cc:48)
-|     ->03.69% (4,194,368B) 0x1A75CF: absl::lts_2020_09_23::memory_internal::MakeUniqueResult<Visqol::FftManager>::scalar absl::lts_2020_09_23::make_unique<Visqol::FftManager, unsigned long>(unsigned long&&) (memory.h:170)
-|       ->03.69% (4,194,368B) 0x1A689C: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:42)
-|         ->03.69% (4,194,368B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-|           ->03.69% (4,194,368B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|           | ->03.69% (4,194,368B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|           |   ->03.69% (4,194,368B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|           |     ->03.69% (4,194,368B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|           |       ->03.69% (4,194,368B) 0x12D194: main (main.cc:47)
-|           |         
-|           ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|           
-->08.48% (9,633,792B) 0x168F7D: __gnu_cxx::new_allocator<std::complex<double> >::allocate(unsigned long, void const*) (new_allocator.h:114)
-| ->08.48% (9,633,792B) 0x163587: std::allocator_traits<std::allocator<std::complex<double> > >::allocate(std::allocator<std::complex<double> >&, unsigned long) (alloc_traits.h:444)
-|   ->08.48% (9,633,792B) 0x15A223: std::_Vector_base<std::complex<double>, std::allocator<std::complex<double> > >::_M_allocate(unsigned long) (stl_vector.h:343)
-|     ->08.48% (9,633,792B) 0x15218C: std::vector<std::complex<double>, std::allocator<std::complex<double> > >::reserve(unsigned long) (vector.tcc:78)
-|       ->08.48% (9,633,792B) 0x1B859E: Visqol::FastFourierTransform::Inverse1d(std::unique_ptr<Visqol::FftManager, std::default_delete<Visqol::FftManager> > const&, Visqol::AMatrix<std::complex<double> > const&) (fast_fourier_transform.cc:118)
-|       | ->08.48% (9,633,792B) 0x1A6B72: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:71)
-|       |   ->08.48% (9,633,792B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-|       |     ->08.48% (9,633,792B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|       |     | ->08.48% (9,633,792B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|       |     |   ->08.48% (9,633,792B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|       |     |     ->08.48% (9,633,792B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|       |     |       ->08.48% (9,633,792B) 0x12D194: main (main.cc:47)
-|       |     |         
-|       |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|       |     
-|       ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|       
-->07.38% (8,388,608B) 0x140457: __gnu_cxx::new_allocator<double>::allocate(unsigned long, void const*) (new_allocator.h:114)
-| ->07.38% (8,388,608B) 0x13FA9F: std::allocator_traits<std::allocator<double> >::allocate(std::allocator<double>&, unsigned long) (alloc_traits.h:444)
-|   ->07.38% (8,388,608B) 0x13F059: std::_Vector_base<double, std::allocator<double> >::_M_allocate(unsigned long) (stl_vector.h:343)
-|     ->07.38% (8,388,608B) 0x1680C2: std::_Vector_base<double, std::allocator<double> >::_M_create_storage(unsigned long) (stl_vector.h:358)
-|       ->07.38% (8,388,608B) 0x16158C: std::_Vector_base<double, std::allocator<double> >::_Vector_base(unsigned long, std::allocator<double> const&) (stl_vector.h:302)
-|         ->07.38% (8,388,608B) 0x1A7650: std::vector<double, std::allocator<double> >::vector(unsigned long, double const&, std::allocator<double> const&) (stl_vector.h:521)
-|         | ->07.38% (8,388,608B) 0x1A6940: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:49)
-|         |   ->07.38% (8,388,608B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-|         |     ->07.38% (8,388,608B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|         |     | ->07.38% (8,388,608B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|         |     |   ->07.38% (8,388,608B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|         |     |     ->07.38% (8,388,608B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|         |     |       ->07.38% (8,388,608B) 0x12D194: main (main.cc:47)
-|         |     |         
-|         |     ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|         |     
-|         ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|         
-->00.23% (262,059B) in 1+ places, all below ms_print's threshold (01.00%)
+->00.33% (263,819B) in 1+ places, all below ms_print's threshold (01.00%)
 
 --------------------------------------------------------------------------------
   n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
 --------------------------------------------------------------------------------
-  2 15,597,537,692      112,971,432      112,948,032        23,400            0
-  3 29,196,276,886       30,243,288       30,237,843         5,445            0
-  4 39,120,460,860       30,274,072       30,268,579         5,493            0
-  5 47,072,058,611       30,274,072       30,268,579         5,493            0
-  6 55,531,510,135       30,274,072       30,268,579         5,493            0
-  7 63,990,961,659       30,274,072       30,268,579         5,493            0
-  8 73,170,270,574       30,274,072       30,268,579         5,493            0
-99.98% (30,268,579B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
-->82.99% (25,125,456B) 0x153C56: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
-| ->63.42% (19,198,336B) 0x14FB67: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
-| | ->63.42% (19,198,336B) 0x150099: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
-| | | ->63.42% (19,198,336B) 0x147BD8: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
-| | |   ->63.42% (19,198,336B) 0x1AC427: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
-| | |   | ->63.42% (19,198,336B) 0x1AC098: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
-| | |   |   ->31.82% (9,633,792B) 0x138342: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
-| | |   |   | ->31.82% (9,633,792B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |   |   ->31.82% (9,633,792B) 0x12D194: main (main.cc:47)
+  3 26,429,443,543       30,274,104       30,268,579         5,525            0
+  4 39,733,708,402       30,274,072       30,268,579         5,493            0
+  5 49,309,164,318       30,274,104       30,268,579         5,525            0
+  6 63,556,812,865       30,243,320       30,237,843         5,477            0
+  7 75,721,420,237       30,243,352       30,237,843         5,509            0
+  8 87,886,027,609       30,243,352       30,237,843         5,509            0
+  9 93,968,331,295       30,243,320       30,237,843         5,477            0
+ 10 105,604,161,279       30,274,104       30,268,579         5,525            0
+ 11 114,744,465,865       30,274,104       30,268,579         5,525            0
+ 12 125,190,224,441       30,274,088       30,268,579         5,509            0
+ 13 135,637,115,482       30,432,840       30,428,083         4,757            0
+99.98% (30,428,083B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->83.08% (25,283,920B) 0x153C80: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
+| ->63.08% (19,198,336B) 0x14FB33: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
+| | ->63.08% (19,198,336B) 0x150065: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
+| | | ->63.08% (19,198,336B) 0x147C92: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
+| | |   ->63.08% (19,198,336B) 0x1AC321: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
+| | |   | ->63.08% (19,198,336B) 0x1ABF92: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
+| | |   |   ->31.66% (9,633,792B) 0x138362: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
+| | |   |   | ->31.66% (9,633,792B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   |   |   ->31.66% (9,633,792B) 0x12D1B4: main (main.cc:47)
 | | |   |   |     
-| | |   |   ->31.59% (9,564,544B) 0x138329: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
-| | |   |     ->31.59% (9,564,544B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |       ->31.59% (9,564,544B) 0x12D194: main (main.cc:47)
+| | |   |   ->31.43% (9,564,544B) 0x138349: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
+| | |   |     ->31.43% (9,564,544B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   |       ->31.43% (9,564,544B) 0x12D1B4: main (main.cc:47)
 | | |   |         
 | | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | | |   
 | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | | 
-| ->19.58% (5,927,120B) 0x14F33D: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
-|   ->15.80% (4,783,056B) 0x14F659: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
-|   | ->15.80% (4,783,056B) 0x146C85: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
-|   |   ->15.80% (4,783,056B) 0x1424EA: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
-|   |   | ->15.80% (4,783,056B) 0x142CB5: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
-|   |   |   ->15.80% (4,783,056B) 0x142C20: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
-|   |   |     ->15.80% (4,783,056B) 0x142A19: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
-|   |   |       ->15.80% (4,783,056B) 0x142768: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
-|   |   |         ->15.80% (4,783,056B) 0x141AF8: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:93)
-|   |   |           ->15.80% (4,783,056B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-|   |   |             ->15.80% (4,783,056B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|   |   |               ->15.80% (4,783,056B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|   |   |                 ->15.80% (4,783,056B) 0x12D194: main (main.cc:47)
+| ->20.00% (6,085,584B) 0x14F309: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
+|   ->16.24% (4,941,520B) 0x14F625: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
+|   | ->16.24% (4,941,520B) 0x146D3F: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
+|   |   ->15.72% (4,783,056B) 0x1425A4: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
+|   |   | ->15.72% (4,783,056B) 0x142D6F: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
+|   |   |   ->15.72% (4,783,056B) 0x142CDA: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
+|   |   |     ->15.72% (4,783,056B) 0x142AD3: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
+|   |   |       ->15.72% (4,783,056B) 0x142822: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
+|   |   |         ->15.72% (4,783,056B) 0x141B86: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:96)
+|   |   |           ->15.72% (4,783,056B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+|   |   |             ->15.72% (4,783,056B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+|   |   |               ->15.72% (4,783,056B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+|   |   |                 ->15.72% (4,783,056B) 0x12D1B4: main (main.cc:47)
 |   |   |                   
-|   |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   |   ->00.52% (158,464B) in 1+ places, all below ms_print's threshold (01.00%)
 |   |   
-|   ->03.78% (1,144,064B) 0x14F3BA: arma::Mat<double>::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
-|   | ->03.77% (1,141,504B) 0x147477: Visqol::AMatrix<double>::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
-|   | | ->03.25% (983,040B) 0x1B2D78: Visqol::GammatoneFilterBank::ApplyFilter(std::valarray<double> const&) (gammatone_filterbank.cc:58)
-|   | | | ->03.25% (983,040B) 0x1B03E1: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:76)
-|   | | |   ->03.25% (983,040B) 0x196074: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:47)
-|   | | |     ->03.25% (983,040B) 0x1387DD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
-|   | | |       ->03.25% (983,040B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|   | | |         ->03.25% (983,040B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|   | | |           ->03.25% (983,040B) 0x12D194: main (main.cc:47)
-|   | | |             
+|   ->03.76% (1,144,064B) 0x14F386: arma::Mat<double>::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
+|   | ->03.75% (1,141,504B) 0x147531: Visqol::AMatrix<double>::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
+|   | | ->03.23% (983,040B) 0x1B2C72: Visqol::GammatoneFilterBank::ApplyFilter(std::valarray<double> const&) (gammatone_filterbank.cc:58)
+|   | | | ->03.23% (983,040B) 0x1B02DB: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:76)
+|   | | |   ->03.23% (983,040B) 0x19605F: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:55)
+|   | | |   | ->03.23% (983,040B) 0x1387FD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
+|   | | |   |   ->03.23% (983,040B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+|   | | |   |     ->03.23% (983,040B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+|   | | |   |       ->03.23% (983,040B) 0x12D1B4: main (main.cc:47)
+|   | | |   |         
+|   | | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   | | |   
 |   | | ->00.52% (158,464B) in 1+ places, all below ms_print's threshold (01.00%)
 |   | | 
 |   | ->00.01% (2,560B) in 1+ places, all below ms_print's threshold (01.00%)
 |   | 
 |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 |   
-->16.12% (4,879,216B) 0x1598CB: double* std::__valarray_get_storage<double>(unsigned long) (valarray_array.h:58)
-| ->15.81% (4,784,832B) 0x151B24: std::valarray<double>::valarray(double const*, unsigned long) (valarray:638)
-| | ->15.81% (4,784,832B) 0x14A65C: Visqol::AMatrix<double>::ToValArray() const (amatrix.cc:395)
-| |   ->15.80% (4,782,272B) 0x1B02E7: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:69)
-| |   | ->15.80% (4,782,272B) 0x196074: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:47)
-| |   |   ->15.80% (4,782,272B) 0x1387DD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
-| |   |     ->15.80% (4,782,272B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| |   |       ->15.80% (4,782,272B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| |   |         ->15.80% (4,782,272B) 0x12D194: main (main.cc:47)
-| |   |           
+->16.04% (4,880,000B) 0x1598F5: double* std::__valarray_get_storage<double>(unsigned long) (valarray_array.h:58)
+| ->15.73% (4,785,616B) 0x151AF0: std::valarray<double>::valarray(double const*, unsigned long) (valarray:638)
+| | ->15.73% (4,785,616B) 0x14A684: Visqol::AMatrix<double>::ToValArray() const (amatrix.cc:406)
+| |   ->15.72% (4,783,056B) 0x1B01E1: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:69)
+| |   | ->15.72% (4,783,056B) 0x19605F: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:55)
+| |   | | ->15.72% (4,783,056B) 0x1387FD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
+| |   | |   ->15.72% (4,783,056B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| |   | |     ->15.72% (4,783,056B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| |   | |       ->15.72% (4,783,056B) 0x12D1B4: main (main.cc:47)
+| |   | |         
+| |   | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
 | |   ->00.01% (2,560B) in 1+ places, all below ms_print's threshold (01.00%)
 | |   
 | ->00.31% (94,384B) in 1+ places, all below ms_print's threshold (01.00%)
 | 
-->00.87% (263,907B) in 1+ places, all below ms_print's threshold (01.00%)
+->00.87% (264,163B) in 1+ places, all below ms_print's threshold (01.00%)
 
 --------------------------------------------------------------------------------
   n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
 --------------------------------------------------------------------------------
-  9 86,399,369,008       30,274,072       30,268,579         5,493            0
- 10 95,736,325,978       30,274,072       30,268,579         5,493            0
- 11 102,739,346,579       30,274,040       30,268,579         5,461            0
- 12 112,857,453,457       30,274,040       30,268,579         5,461            0
- 13 125,312,073,105       30,274,072       30,268,579         5,493            0
- 14 139,324,665,406       30,432,824       30,428,083         4,741            0
- 15 150,222,557,285       30,432,872       30,428,083         4,789            0
- 16 156,450,000,025       30,432,856       30,428,083         4,773            0
- 17 167,347,891,904       30,432,856       30,428,083         4,773            0
- 18 173,575,334,644       30,432,856       30,428,083         4,773            0
- 19 184,473,226,523       30,432,840       30,428,083         4,757            0
- 20 190,703,399,077       30,432,872       30,428,083         4,789            0
- 21 200,048,770,327       30,432,840       30,428,083         4,757            0
- 22 214,067,320,530       30,432,856       30,428,083         4,773            0
- 23 223,412,691,780       30,432,856       30,428,083         4,773            0
- 24 231,201,069,429       30,432,872       30,428,083         4,789            0
- 25 243,664,256,770       30,432,856       30,428,083         4,773            0
- 26 251,451,853,089       30,181,904       30,161,899        20,005            0
- 27 259,237,017,900       30,214,008       30,193,899        20,109            0
- 28 270,140,313,297       30,181,904       30,161,899        20,005            0
- 29 279,486,857,967       30,205,016       30,184,939        20,077            0
-99.93% (30,184,939B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
-->98.10% (29,631,056B) 0x153C56: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
-| ->79.33% (23,960,704B) 0x14FB67: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
-| | ->79.33% (23,960,704B) 0x150099: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
-| | | ->79.33% (23,960,704B) 0x147BD8: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
-| | |   ->63.56% (19,198,336B) 0x1AC427: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
-| | |   | ->63.56% (19,198,336B) 0x1AC098: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
-| | |   |   ->31.89% (9,633,792B) 0x138342: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
-| | |   |   | ->31.89% (9,633,792B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |   |   ->31.89% (9,633,792B) 0x12D194: main (main.cc:47)
+ 14 150,000,299,356       30,432,872       30,428,083         4,789            0
+ 15 159,140,603,942       30,432,872       30,428,083         4,789            0
+ 16 174,169,136,565       30,402,120       30,397,347         4,773            0
+ 17 185,280,740,004       30,340,664       30,336,003         4,661            0
+ 18 191,947,464,011       30,402,120       30,397,347         4,773            0
+ 19 200,836,494,818       30,402,120       30,397,347         4,773            0
+ 20 209,725,525,625       30,402,104       30,397,347         4,757            0
+ 21 218,614,822,264       30,402,120       30,397,347         4,773            0
+ 22 227,503,853,071       30,402,120       30,397,347         4,773            0
+99.98% (30,397,347B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->83.16% (25,283,920B) 0x153C80: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
+| ->63.15% (19,198,336B) 0x14FB33: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
+| | ->63.15% (19,198,336B) 0x150065: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
+| | | ->63.15% (19,198,336B) 0x147C92: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
+| | |   ->63.15% (19,198,336B) 0x1AC321: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
+| | |   | ->63.15% (19,198,336B) 0x1ABF92: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
+| | |   |   ->31.69% (9,633,792B) 0x138362: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
+| | |   |   | ->31.69% (9,633,792B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   |   |   ->31.69% (9,633,792B) 0x12D1B4: main (main.cc:47)
 | | |   |   |     
-| | |   |   ->31.67% (9,564,544B) 0x138329: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
-| | |   |     ->31.67% (9,564,544B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |       ->31.67% (9,564,544B) 0x12D194: main (main.cc:47)
+| | |   |   ->31.46% (9,564,544B) 0x138349: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
+| | |   |     ->31.46% (9,564,544B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   |       ->31.46% (9,564,544B) 0x12D1B4: main (main.cc:47)
 | | |   |         
-| | |   ->15.74% (4,753,920B) 0x19E8D7: Visqol::ComparisonPatchesSelector::FindMostOptimalDegPatches(std::vector<Visqol::AMatrix<double>, std::allocator<Visqol::AMatrix<double> > > const&, std::vector<unsigned long, std::allocator<unsigned long> > const&, Visqol::AMatrix<double> const&, double, int) const (comparison_patches_selector.cc:172)
-| | |   | ->15.74% (4,753,920B) 0x1964C8: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:83)
-| | |   |   ->15.74% (4,753,920B) 0x1387DD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
-| | |   |     ->15.74% (4,753,920B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | |   |       ->15.74% (4,753,920B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |         ->15.74% (4,753,920B) 0x12D194: main (main.cc:47)
-| | |   |           
-| | |   ->00.03% (8,448B) in 1+ places, all below ms_print's threshold (01.00%)
+| | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | | |   
 | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | | 
-| ->18.77% (5,670,352B) 0x14F33D: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
-| | ->18.44% (5,570,512B) 0x14F659: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
-| | | ->18.44% (5,570,512B) 0x146C85: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
-| | |   ->15.84% (4,783,056B) 0x1424EA: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
-| | |   | ->15.84% (4,783,056B) 0x142CB5: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
-| | |   |   ->15.84% (4,783,056B) 0x142C20: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
-| | |   |     ->15.84% (4,783,056B) 0x142A19: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
-| | |   |       ->15.84% (4,783,056B) 0x142768: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
-| | |   |         ->15.84% (4,783,056B) 0x141AF8: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:93)
-| | |   |           ->15.84% (4,783,056B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-| | |   |             ->15.84% (4,783,056B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | |   |               ->15.84% (4,783,056B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |                 ->15.84% (4,783,056B) 0x12D194: main (main.cc:47)
-| | |   |                   
-| | |   ->01.05% (316,928B) 0x198135: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram const&) (spectrogram.h:29)
-| | |   | ->01.05% (316,928B) in 2 places, all below massif's threshold (1.00%)
-| | |   |   
-| | |   ->01.05% (316,928B) 0x1B1C28: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram&&) (spectrogram.h:29)
-| | |   | ->01.05% (316,928B) 0x1B1D41: absl::lts_2020_09_23::internal_statusor::StatusOrData<Visqol::Spectrogram>::StatusOrData<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor_internal.h:204)
-| | |   |   ->01.05% (316,928B) 0x1B1B3B: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor.h:655)
-| | |   |     ->01.05% (316,928B) 0x1B18C3: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram, 0>(Visqol::Spectrogram&&) (statusor.h:440)
-| | |   |       ->01.05% (316,928B) 0x1B05FF: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:99)
-| | |   |         ->01.05% (316,928B) in 2 places, all below massif's threshold (1.00%)
-| | |   |           
-| | |   ->00.51% (153,600B) in 1+ places, all below ms_print's threshold (01.00%)
-| | |   
-| | ->00.33% (99,840B) in 1+ places, all below ms_print's threshold (01.00%)
-| | 
-| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| 
-->01.83% (553,883B) in 77 places, all below massif's threshold (1.00%)
-  
---------------------------------------------------------------------------------
-  n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
---------------------------------------------------------------------------------
- 30 291,948,282,630       30,151,088       30,131,179        19,909            0
- 31 301,294,193,474       30,129,264       30,109,419        19,845            0
- 32 313,755,791,509       30,258,944       30,238,699        20,245            0
- 33 323,101,640,109       30,214,008       30,193,899        20,109            0
- 34 335,563,801,157       27,848,784       27,842,875         5,909            0
- 35 348,024,806,192       27,818,856       27,812,947         5,909            0
- 36 357,370,591,107       27,819,656       27,813,731         5,925            0
- 37 366,716,676,832       27,727,896       27,722,163         5,733            0
- 38 376,063,953,125       27,821,288       27,815,267         6,021            0
- 39 388,526,321,822       27,791,072       27,784,987         6,085            0
- 40 394,759,511,767       27,835,712       27,829,547         6,165            0
- 41 407,223,281,843       27,823,664       27,817,571         6,093            0
- 42 419,684,284,218       27,793,400       27,787,291         6,109            0
- 43 426,598,363,842       27,825,232       27,819,107         6,125            0
- 44 438,120,190,184       27,826,040       27,819,875         6,165            0
- 45 445,033,247,670       27,840,376       27,834,211         6,165            0
- 46 453,098,463,420       27,810,496       27,804,243         6,253            0
- 47 462,323,049,870       27,842,024       27,835,747         6,277            0
- 48 470,405,792,460       27,828,112       27,821,867         6,245            0
- 49 477,318,615,993       27,798,408       27,792,211         6,197            0
- 50 479,251,932,055       27,829,240       27,822,947         6,293            0
- 51 481,185,627,036       27,798,472       27,792,211         6,261            0
- 52 483,118,133,068       27,812,840       27,806,547         6,293            0
- 53 485,051,714,962       27,843,592       27,837,283         6,309            0
- 54 486,986,447,580       28,132,328       28,126,395         5,933            0
-99.98% (28,126,395B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
-->91.48% (25,734,224B) 0x153C56: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
-| ->68.34% (19,225,984B) 0x14FB67: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
-| | ->68.34% (19,225,984B) 0x150099: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
-| | | ->68.34% (19,225,984B) 0x147BD8: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
-| | |   ->68.24% (19,198,336B) 0x1AC427: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
-| | |   | ->68.24% (19,198,336B) 0x1AC098: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
-| | |   |   ->34.24% (9,633,792B) 0x138342: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
-| | |   |   | ->34.24% (9,633,792B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |   |   ->34.24% (9,633,792B) 0x12D194: main (main.cc:47)
-| | |   |   |     
-| | |   |   ->34.00% (9,564,544B) 0x138329: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
-| | |   |     ->34.00% (9,564,544B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |       ->34.00% (9,564,544B) 0x12D194: main (main.cc:47)
-| | |   |         
-| | |   ->00.10% (27,648B) in 1+ places, all below ms_print's threshold (01.00%)
-| | |   
-| | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| | 
-| ->23.13% (6,508,240B) 0x14F33D: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
-| | ->21.50% (6,047,440B) 0x14F659: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
-| | | ->21.50% (6,047,440B) 0x146C85: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
-| | |   ->17.00% (4,783,056B) 0x1424EA: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
-| | |   | ->17.00% (4,783,056B) 0x142CB5: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
-| | |   | | ->17.00% (4,783,056B) 0x142C20: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
-| | |   | | | ->17.00% (4,783,056B) 0x142A19: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
-| | |   | | |   ->17.00% (4,783,056B) 0x142768: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
-| | |   | | |     ->17.00% (4,783,056B) 0x141AF8: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:93)
-| | |   | | |       ->17.00% (4,783,056B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-| | |   | | |         ->17.00% (4,783,056B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | |   | | |           ->17.00% (4,783,056B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   | | |             ->17.00% (4,783,056B) 0x12D194: main (main.cc:47)
-| | |   | | |               
-| | |   | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| | |   | | 
-| | |   | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| | |   | 
-| | |   ->01.64% (460,800B) 0x19F7CF: Visqol::ComparisonPatchesSelector::Slice(Visqol::AudioSignal const&, double, double) (comparison_patches_selector.cc:297)
-| | |   | ->01.64% (460,800B) in 2 places, all below massif's threshold (1.00%)
-| | |   |   
-| | |   ->01.13% (316,928B) 0x198135: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram const&) (spectrogram.h:29)
-| | |   | ->01.13% (316,928B) in 4 places, all below massif's threshold (1.00%)
-| | |   |   
-| | |   ->01.13% (316,928B) 0x1B1C28: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram&&) (spectrogram.h:29)
-| | |   | ->01.13% (316,928B) 0x1B1D41: absl::lts_2020_09_23::internal_statusor::StatusOrData<Visqol::Spectrogram>::StatusOrData<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor_internal.h:204)
-| | |   |   ->01.13% (316,928B) 0x1B1B3B: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor.h:655)
-| | |   |     ->01.13% (316,928B) 0x1B18C3: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram, 0>(Visqol::Spectrogram&&) (statusor.h:440)
-| | |   |       ->01.13% (316,928B) 0x1B05FF: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:99)
-| | |   |         ->01.13% (316,928B) in 4 places, all below massif's threshold (1.00%)
-| | |   |           
-| | |   ->00.60% (169,728B) in 1+ places, all below ms_print's threshold (01.00%)
-| | |   
-| | ->01.64% (460,800B) in 14 places, all below massif's threshold (1.00%)
-| |   
-| ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-| 
-->03.73% (1,048,576B) 0x1634A6: std::complex<double>* arma::memory::acquire<std::complex<double> >(unsigned long long) (memory.hpp:82)
-| ->03.73% (1,048,576B) 0x159F49: arma::Mat<std::complex<double> >::init_cold() (Mat_meat.hpp:220)
-|   ->01.86% (524,288B) 0x152458: arma::Mat<std::complex<double> >::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
-|   | ->01.86% (524,288B) 0x14B0C3: Visqol::AMatrix<std::complex<double> >::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
-|   |   ->01.86% (524,288B) 0x1A6AAD: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:66)
-|   |     ->01.86% (524,288B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-|   |       ->01.86% (524,288B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|   |       | ->01.86% (524,288B) 0x14135E: Visqol::Alignment::AlignAndTruncate(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:29)
-|   |       | | ->01.86% (524,288B) 0x19FA7C: Visqol::ComparisonPatchesSelector::FinelyAlignAndRecreatePatches(std::vector<Visqol::PatchSimilarityResult, std::allocator<Visqol::PatchSimilarityResult> > const&, Visqol::AudioSignal const&, Visqol::AudioSignal const&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&) const (comparison_patches_selector.cc:326)
-|   |       | |   ->01.86% (524,288B) 0x19656D: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:94)
-|   |       | |     ->01.86% (524,288B) 0x1387DD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
-|   |       | |       ->01.86% (524,288B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|   |       | |         ->01.86% (524,288B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|   |       | |           ->01.86% (524,288B) 0x12D194: main (main.cc:47)
-|   |       | |             
-|   |       | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|   |       | 
-|   |       ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|   |       
-|   ->01.86% (524,288B) 0x1526FA: arma::Mat<std::complex<double> >::Mat(std::complex<double> const*, unsigned long long, unsigned long long) (Mat_meat.hpp:1251)
-|   | ->01.86% (524,288B) 0x14B2BC: Visqol::AMatrix<std::complex<double> >::AMatrix(unsigned long, unsigned long, std::vector<std::complex<double>, std::allocator<std::complex<double> > > const&) (amatrix.cc:91)
-|   |   ->01.86% (524,288B) 0x1B8187: Visqol::FastFourierTransform::Forward1d(std::unique_ptr<Visqol::FftManager, std::default_delete<Visqol::FftManager> > const&, Visqol::AMatrix<double> const&) (fast_fourier_transform.cc:69)
-|   |   | ->01.86% (524,288B) 0x1A68BC: Visqol::Envelope::Hilbert(Visqol::AMatrix<double> const&) (envelope.cc:44)
-|   |   | | ->01.86% (524,288B) 0x1A66DE: Visqol::Envelope::CalcUpperEnv(Visqol::AMatrix<double> const&) (envelope.cc:31)
-|   |   | |   ->01.86% (524,288B) 0x14180E: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:63)
-|   |   | |   | ->01.86% (524,288B) 0x14135E: Visqol::Alignment::AlignAndTruncate(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:29)
-|   |   | |   | | ->01.86% (524,288B) 0x19FA7C: Visqol::ComparisonPatchesSelector::FinelyAlignAndRecreatePatches(std::vector<Visqol::PatchSimilarityResult, std::allocator<Visqol::PatchSimilarityResult> > const&, Visqol::AudioSignal const&, Visqol::AudioSignal const&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&) const (comparison_patches_selector.cc:326)
-|   |   | |   | |   ->01.86% (524,288B) 0x19656D: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:94)
-|   |   | |   | |     ->01.86% (524,288B) 0x1387DD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
-|   |   | |   | |       ->01.86% (524,288B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-|   |   | |   | |         ->01.86% (524,288B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-|   |   | |   | |           ->01.86% (524,288B) 0x12D194: main (main.cc:47)
-|   |   | |   | |             
-|   |   | |   | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|   |   | |   | 
-|   |   | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|   |   | |   
-|   |   | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
-|   |   | 
-|   |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| ->20.02% (6,085,584B) 0x14F309: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
+|   ->16.25% (4,941,520B) 0x14F625: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
+|   | ->16.25% (4,941,520B) 0x146D3F: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
+|   |   ->15.73% (4,783,056B) 0x1425A4: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
+|   |   | ->15.73% (4,783,056B) 0x142D6F: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
+|   |   |   ->15.73% (4,783,056B) 0x142CDA: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
+|   |   |     ->15.73% (4,783,056B) 0x142AD3: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
+|   |   |       ->15.73% (4,783,056B) 0x142822: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
+|   |   |         ->15.73% (4,783,056B) 0x141B86: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:96)
+|   |   |           ->15.73% (4,783,056B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+|   |   |             ->15.73% (4,783,056B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+|   |   |               ->15.73% (4,783,056B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+|   |   |                 ->15.73% (4,783,056B) 0x12D1B4: main (main.cc:47)
+|   |   |                   
+|   |   ->00.52% (158,464B) in 1+ places, all below ms_print's threshold (01.00%)
 |   |   
+|   ->03.76% (1,144,064B) 0x14F386: arma::Mat<double>::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
+|   | ->03.75% (1,141,504B) 0x147531: Visqol::AMatrix<double>::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
+|   | | ->03.23% (983,040B) 0x1B2C72: Visqol::GammatoneFilterBank::ApplyFilter(std::valarray<double> const&) (gammatone_filterbank.cc:58)
+|   | | | ->03.23% (983,040B) 0x1B02DB: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:76)
+|   | | |   ->03.23% (983,040B) 0x19605F: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:55)
+|   | | |   | ->03.23% (983,040B) 0x1387FD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
+|   | | |   |   ->03.23% (983,040B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+|   | | |   |     ->03.23% (983,040B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+|   | | |   |       ->03.23% (983,040B) 0x12D1B4: main (main.cc:47)
+|   | | |   |         
+|   | | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+|   | | |   
+|   | | ->00.52% (158,464B) in 1+ places, all below ms_print's threshold (01.00%)
+|   | | 
+|   | ->00.01% (2,560B) in 1+ places, all below ms_print's threshold (01.00%)
+|   | 
 |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 |   
-->02.74% (770,880B) 0x3C20FB: pffft_aligned_malloc (pffft.c:254)
-| ->01.40% (393,344B) in 2 places, all below massif's threshold (1.00%)
-| | 
-| ->01.34% (377,536B) 0x1B58DD: Visqol::AudioChannel::Init(unsigned long) (audio_channel.h:45)
-|   ->01.34% (377,536B) in 6 places, all below massif's threshold (1.00%)
-|     
-->02.04% (572,715B) in 75 places, all below massif's threshold (1.00%)
-  
+->15.95% (4,849,264B) 0x1598F5: double* std::__valarray_get_storage<double>(unsigned long) (valarray_array.h:58)
+| ->15.74% (4,785,616B) 0x151AF0: std::valarray<double>::valarray(double const*, unsigned long) (valarray:638)
+| | ->15.74% (4,785,616B) 0x14A684: Visqol::AMatrix<double>::ToValArray() const (amatrix.cc:406)
+| |   ->15.73% (4,783,056B) 0x1B01E1: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:69)
+| |   | ->15.73% (4,783,056B) 0x19605F: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:55)
+| |   | | ->15.73% (4,783,056B) 0x1387FD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
+| |   | |   ->15.73% (4,783,056B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| |   | |     ->15.73% (4,783,056B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| |   | |       ->15.73% (4,783,056B) 0x12D1B4: main (main.cc:47)
+| |   | |         
+| |   | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   | 
+| |   ->00.01% (2,560B) in 1+ places, all below ms_print's threshold (01.00%)
+| |   
+| ->00.21% (63,648B) in 1+ places, all below ms_print's threshold (01.00%)
+| 
+->00.87% (264,163B) in 1+ places, all below ms_print's threshold (01.00%)
+
 --------------------------------------------------------------------------------
   n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
 --------------------------------------------------------------------------------
- 55 488,920,092,284       27,829,984       27,823,715         6,269            0
- 56 490,853,521,433       27,799,216       27,792,979         6,237            0
- 57 492,786,293,297       27,813,744       27,807,315         6,429            0
- 58 494,719,609,359       27,844,512       27,838,051         6,461            0
- 59 496,653,304,340       27,813,712       27,807,315         6,397            0
- 60 498,586,889,611       27,830,808       27,824,483         6,325            0
- 61 500,520,206,007       27,830,808       27,824,483         6,325            0
- 62 502,452,977,871       27,845,208       27,838,819         6,389            0
- 63 504,386,406,686       27,845,224       27,838,819         6,405            0
- 64 506,319,988,914       27,845,256       27,838,819         6,437            0
-99.98% (27,838,819B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
-->97.69% (27,202,128B) 0x153C56: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
-| ->69.05% (19,226,752B) 0x14FB67: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
-| | ->69.05% (19,226,752B) 0x150099: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
-| | | ->69.05% (19,226,752B) 0x147BD8: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
-| | |   ->68.95% (19,198,336B) 0x1AC427: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
-| | |   | ->68.95% (19,198,336B) 0x1AC098: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
-| | |   |   ->34.60% (9,633,792B) 0x138342: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
-| | |   |   | ->34.60% (9,633,792B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |   |   ->34.60% (9,633,792B) 0x12D194: main (main.cc:47)
+ 23 236,392,883,878       30,402,104       30,397,347         4,757            0
+ 24 247,504,143,948       30,432,856       30,428,083         4,773            0
+ 25 256,390,878,680       30,210,008       30,184,939        25,069            0
+ 26 265,278,671,252       30,171,472       30,146,539        24,933            0
+ 27 274,164,978,439       30,210,056       30,184,939        25,117            0
+ 28 285,570,209,809       30,180,448       30,155,499        24,949            0
+ 29 300,777,128,031       30,180,448       30,155,499        24,949            0
+ 30 312,182,372,028       30,210,056       30,184,939        25,117            0
+ 31 323,589,271,472       30,186,864       30,161,899        24,965            0
+ 32 331,194,902,221       27,817,184       27,811,427         5,757            0
+ 33 346,401,901,875       27,801,752       27,795,795         5,957            0
+99.98% (27,795,795B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+->97.80% (27,189,840B) 0x153C80: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
+| ->69.11% (19,214,464B) 0x14FB33: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
+| | ->69.11% (19,214,464B) 0x150065: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
+| | | ->69.11% (19,214,464B) 0x147C92: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
+| | |   ->69.05% (19,198,336B) 0x1AC321: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
+| | |   | ->69.05% (19,198,336B) 0x1ABF92: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
+| | |   |   ->34.65% (9,633,792B) 0x138362: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
+| | |   |   | ->34.65% (9,633,792B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   |   |   ->34.65% (9,633,792B) 0x12D1B4: main (main.cc:47)
 | | |   |   |     
-| | |   |   ->34.35% (9,564,544B) 0x138329: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
-| | |   |     ->34.35% (9,564,544B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |       ->34.35% (9,564,544B) 0x12D194: main (main.cc:47)
+| | |   |   ->34.40% (9,564,544B) 0x138349: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
+| | |   |     ->34.40% (9,564,544B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   |       ->34.40% (9,564,544B) 0x12D1B4: main (main.cc:47)
 | | |   |         
-| | |   ->00.10% (28,416B) in 1+ places, all below ms_print's threshold (01.00%)
+| | |   ->00.06% (16,128B) in 1+ places, all below ms_print's threshold (01.00%)
 | | |   
 | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | | 
-| ->28.64% (7,975,376B) 0x14F33D: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
-| | ->25.08% (6,982,864B) 0x14F659: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
-| | | ->25.08% (6,982,864B) 0x146C85: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
-| | |   ->20.49% (5,704,656B) 0x1424EA: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
-| | |   | ->18.00% (5,013,456B) 0x142CB5: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
-| | |   | | ->17.18% (4,783,056B) 0x142C20: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
-| | |   | | | ->17.18% (4,783,056B) 0x142A19: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
-| | |   | | |   ->17.18% (4,783,056B) 0x142768: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
-| | |   | | |     ->17.18% (4,783,056B) 0x141AF8: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:93)
-| | |   | | |       ->17.18% (4,783,056B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-| | |   | | |         ->17.18% (4,783,056B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | |   | | |           ->17.18% (4,783,056B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   | | |             ->17.18% (4,783,056B) 0x12D194: main (main.cc:47)
+| ->28.69% (7,975,376B) 0x14F309: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
+| | ->25.12% (6,982,864B) 0x14F625: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
+| | | ->25.12% (6,982,864B) 0x146D3F: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
+| | |   ->20.52% (5,704,656B) 0x1425A4: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
+| | |   | ->18.03% (5,013,456B) 0x142D6F: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
+| | |   | | ->17.20% (4,783,056B) 0x142CDA: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
+| | |   | | | ->17.20% (4,783,056B) 0x142AD3: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
+| | |   | | |   ->17.20% (4,783,056B) 0x142822: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
+| | |   | | |     ->17.20% (4,783,056B) 0x141B86: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:96)
+| | |   | | |       ->17.20% (4,783,056B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+| | |   | | |         ->17.20% (4,783,056B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| | |   | | |           ->17.20% (4,783,056B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   | | |             ->17.20% (4,783,056B) 0x12D1B4: main (main.cc:47)
 | | |   | | |               
 | | |   | | ->00.83% (230,400B) in 1+ places, all below ms_print's threshold (01.00%)
 | | |   | | 
-| | |   | ->02.48% (691,200B) in 5 places, all below massif's threshold (1.00%)
+| | |   | ->02.49% (691,200B) in 5 places, all below massif's threshold (1.00%)
 | | |   |   
-| | |   ->01.65% (460,800B) 0x19F7CF: Visqol::ComparisonPatchesSelector::Slice(Visqol::AudioSignal const&, double, double) (comparison_patches_selector.cc:297)
-| | |   | ->01.65% (460,800B) in 2 places, all below massif's threshold (1.00%)
+| | |   ->01.66% (460,800B) 0x19F6C9: Visqol::ComparisonPatchesSelector::Slice(Visqol::AudioSignal const&, double, double) (comparison_patches_selector.cc:297)
+| | |   | ->01.66% (460,800B) in 2 places, all below massif's threshold (1.00%)
 | | |   |   
-| | |   ->01.16% (323,840B) 0x198135: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram const&) (spectrogram.h:29)
+| | |   ->01.16% (323,840B) 0x19802F: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram const&) (spectrogram.h:29)
 | | |   | ->01.16% (323,840B) in 4 places, all below massif's threshold (1.00%)
 | | |   |   
-| | |   ->01.16% (323,840B) 0x1B1C28: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram&&) (spectrogram.h:29)
-| | |   | ->01.16% (323,840B) 0x1B1D41: absl::lts_2020_09_23::internal_statusor::StatusOrData<Visqol::Spectrogram>::StatusOrData<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor_internal.h:204)
-| | |   |   ->01.16% (323,840B) 0x1B1B3B: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor.h:655)
-| | |   |     ->01.16% (323,840B) 0x1B18C3: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram, 0>(Visqol::Spectrogram&&) (statusor.h:440)
-| | |   |       ->01.16% (323,840B) 0x1B05FF: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:99)
+| | |   ->01.16% (323,840B) 0x1B1B22: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram&&) (spectrogram.h:29)
+| | |   | ->01.16% (323,840B) 0x1B1C3B: absl::lts_2020_09_23::internal_statusor::StatusOrData<Visqol::Spectrogram>::StatusOrData<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor_internal.h:204)
+| | |   |   ->01.16% (323,840B) 0x1B1A35: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor.h:655)
+| | |   |     ->01.16% (323,840B) 0x1B17BD: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram, 0>(Visqol::Spectrogram&&) (statusor.h:440)
+| | |   |       ->01.16% (323,840B) 0x1B04F9: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:99)
 | | |   |         ->01.16% (323,840B) in 4 places, all below massif's threshold (1.00%)
 | | |   |           
 | | |   ->00.61% (169,728B) in 1+ places, all below ms_print's threshold (01.00%)
 | | |   
-| | ->03.56% (992,512B) 0x14F3BA: arma::Mat<double>::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
-| | | ->03.56% (989,952B) 0x147477: Visqol::AMatrix<double>::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
-| | | | ->03.53% (983,040B) 0x1B2D78: Visqol::GammatoneFilterBank::ApplyFilter(std::valarray<double> const&) (gammatone_filterbank.cc:58)
-| | | | | ->03.53% (983,040B) 0x1B03E1: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:76)
-| | | | |   ->03.53% (983,040B) 0x19FC59: Visqol::ComparisonPatchesSelector::FinelyAlignAndRecreatePatches(std::vector<Visqol::PatchSimilarityResult, std::allocator<Visqol::PatchSimilarityResult> > const&, Visqol::AudioSignal const&, Visqol::AudioSignal const&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&) const (comparison_patches_selector.cc:344)
-| | | | |   | ->03.53% (983,040B) 0x19656D: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:94)
-| | | | |   |   ->03.53% (983,040B) 0x1387DD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
-| | | | |   |     ->03.53% (983,040B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | | | |   |       ->03.53% (983,040B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | | | |   |         ->03.53% (983,040B) 0x12D194: main (main.cc:47)
+| | ->03.57% (992,512B) 0x14F386: arma::Mat<double>::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
+| | | ->03.56% (989,952B) 0x147531: Visqol::AMatrix<double>::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
+| | | | ->03.54% (983,040B) 0x1B2C72: Visqol::GammatoneFilterBank::ApplyFilter(std::valarray<double> const&) (gammatone_filterbank.cc:58)
+| | | | | ->03.54% (983,040B) 0x1B02DB: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:76)
+| | | | |   ->03.54% (983,040B) 0x19FB53: Visqol::ComparisonPatchesSelector::FinelyAlignAndRecreatePatches(std::vector<Visqol::PatchSimilarityResult, std::allocator<Visqol::PatchSimilarityResult> > const&, Visqol::AudioSignal const&, Visqol::AudioSignal const&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&) const (comparison_patches_selector.cc:344)
+| | | | |   | ->03.54% (983,040B) 0x196467: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:94)
+| | | | |   |   ->03.54% (983,040B) 0x1387FD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
+| | | | |   |     ->03.54% (983,040B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| | | | |   |       ->03.54% (983,040B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | | | |   |         ->03.54% (983,040B) 0x12D1B4: main (main.cc:47)
 | | | | |   |           
 | | | | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | | | | |   
@@ -596,86 +395,101 @@ Number of snapshots: 76
 | | 
 | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | 
-->01.18% (327,344B) 0x1598CB: double* std::__valarray_get_storage<double>(unsigned long) (valarray_array.h:58)
-| ->01.18% (327,344B) in 6 places, all below massif's threshold (1.00%)
-|   
-->01.11% (309,347B) in 76 places, all below massif's threshold (1.00%)
-  
+->01.11% (309,347B) in 77 places, all below massif's threshold (1.00%)
+| 
+->01.07% (296,608B) 0x1598F5: double* std::__valarray_get_storage<double>(unsigned long) (valarray_array.h:58)
+  ->01.07% (296,608B) in 6 places, all below massif's threshold (1.00%)
+    
 --------------------------------------------------------------------------------
   n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
 --------------------------------------------------------------------------------
- 65 508,253,685,247       27,800,912       27,794,515         6,397            0
- 66 510,187,001,309       27,831,648       27,825,251         6,397            0
- 67 512,120,696,290       27,800,816       27,794,515         6,301            0
- 68 514,053,202,322       27,815,280       27,808,851         6,429            0
- 69 515,986,784,216       27,846,064       27,839,587         6,477            0
- 70 517,922,702,599       31,232,896       31,226,811         6,085            0
- 71 519,855,191,977       27,832,400       27,826,003         6,397            0
- 72 521,788,589,295       27,801,656       27,795,283         6,373            0
- 73 523,721,361,159       27,816,088       27,809,619         6,469            0
- 74 525,654,677,221       27,846,824       27,840,355         6,469            0
+ 34 354,006,837,896       27,833,264       27,827,299         5,965            0
+ 35 365,415,871,293       27,834,024       27,828,067         5,957            0
+ 36 376,822,166,606       27,804,064       27,798,059         6,005            0
+ 37 388,229,973,409       27,821,760       27,815,723         6,037            0
+ 38 399,637,403,816       27,792,072       27,786,067         6,005            0
+ 39 407,242,079,876       27,837,272       27,831,139         6,133            0
+ 40 418,648,664,542       27,793,312       27,787,275         6,037            0
+ 41 426,253,307,967       27,837,976       27,831,851         6,125            0
+ 42 437,660,744,203       27,808,848       27,802,707         6,141            0
+ 43 445,265,676,726       27,840,344       27,834,211         6,133            0
+ 44 456,671,855,961       27,841,184       27,834,979         6,205            0
+ 45 464,275,426,965       27,841,976       27,835,747         6,229            0
+ 46 473,565,069,742       27,828,096       27,821,867         6,229            0
+ 47 488,435,504,950       27,843,592       27,837,283         6,309            0
+ 48 498,669,969,262       27,844,400       27,838,051         6,349            0
+ 49 510,762,699,400       27,800,816       27,794,515         6,301            0
+ 50 512,551,142,240       27,831,568       27,825,251         6,317            0
+ 51 514,339,432,335       27,800,768       27,794,515         6,253            0
+ 52 516,127,065,146       27,815,184       27,808,851         6,333            0
+ 53 517,915,507,986       27,845,936       27,839,587         6,349            0
+ 54 519,703,798,081       27,815,168       27,808,851         6,317            0
+ 55 521,492,240,911       27,832,312       27,826,019         6,293            0
+ 56 523,280,684,085       27,832,312       27,826,019         6,293            0
+ 57 525,069,239,678       27,832,312       27,826,019         6,293            0
+ 58 526,856,872,493       27,846,840       27,840,355         6,485            0
 99.98% (27,840,355B) (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
-->97.69% (27,203,664B) 0x153C56: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
-| ->69.05% (19,228,288B) 0x14FB67: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
-| | ->69.05% (19,228,288B) 0x150099: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
-| | | ->69.05% (19,228,288B) 0x147BD8: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
-| | |   ->68.94% (19,198,336B) 0x1AC427: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
-| | |   | ->68.94% (19,198,336B) 0x1AC098: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
-| | |   |   ->34.60% (9,633,792B) 0x138342: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
-| | |   |   | ->34.60% (9,633,792B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |   |   ->34.60% (9,633,792B) 0x12D194: main (main.cc:47)
+->97.69% (27,203,664B) 0x153C80: double* arma::memory::acquire<double>(unsigned long long) (memory.hpp:82)
+| ->69.05% (19,228,288B) 0x14FB33: arma::Mat<double>::init_warm(unsigned long long, unsigned long long) (Mat_meat.hpp:333)
+| | ->69.05% (19,228,288B) 0x150065: arma::Mat<double>::operator=(arma::Mat<double> const&) (Mat_meat.hpp:811)
+| | | ->69.05% (19,228,288B) 0x147C92: Visqol::AMatrix<double>::operator=(Visqol::AMatrix<double> const&) (amatrix.cc:148)
+| | |   ->68.94% (19,198,336B) 0x1AC321: Visqol::MiscAudio::LoadAsMono(std::__cxx11::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >*, absl::lts_2020_09_23::optional<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >) (misc_audio.cc:135)
+| | |   | ->68.94% (19,198,336B) 0x1ABF92: Visqol::MiscAudio::LoadAsMono(Visqol::FilePath const&) (misc_audio.cc:95)
+| | |   |   ->34.60% (9,633,792B) 0x138362: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:137)
+| | |   |   | ->34.60% (9,633,792B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   |   |   ->34.60% (9,633,792B) 0x12D1B4: main (main.cc:47)
 | | |   |   |     
-| | |   |   ->34.35% (9,564,544B) 0x138329: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
-| | |   |     ->34.35% (9,564,544B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   |       ->34.35% (9,564,544B) 0x12D194: main (main.cc:47)
+| | |   |   ->34.35% (9,564,544B) 0x138349: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:136)
+| | |   |     ->34.35% (9,564,544B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   |       ->34.35% (9,564,544B) 0x12D1B4: main (main.cc:47)
 | | |   |         
 | | |   ->00.11% (29,952B) in 1+ places, all below ms_print's threshold (01.00%)
 | | |   
 | | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | | 
-| ->28.64% (7,975,376B) 0x14F33D: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
-| | ->25.08% (6,982,864B) 0x14F659: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
-| | | ->25.08% (6,982,864B) 0x146C85: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
-| | |   ->20.49% (5,704,656B) 0x1424EA: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
-| | |   | ->18.00% (5,013,456B) 0x142CB5: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
-| | |   | | ->17.18% (4,783,056B) 0x142C20: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
-| | |   | | | ->17.18% (4,783,056B) 0x142A19: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
-| | |   | | |   ->17.18% (4,783,056B) 0x142768: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
-| | |   | | |     ->17.18% (4,783,056B) 0x141AF8: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:93)
-| | |   | | |       ->17.18% (4,783,056B) 0x1386D7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
-| | |   | | |         ->17.18% (4,783,056B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | |   | | |           ->17.18% (4,783,056B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | |   | | |             ->17.18% (4,783,056B) 0x12D194: main (main.cc:47)
+| ->28.64% (7,975,376B) 0x14F309: arma::Mat<double>::init_cold() (Mat_meat.hpp:220)
+| | ->25.08% (6,982,864B) 0x14F625: arma::Mat<double>::Mat(arma::Mat<double> const&) (Mat_meat.hpp:794)
+| | | ->25.08% (6,982,864B) 0x146D3F: Visqol::AMatrix<double>::AMatrix(Visqol::AMatrix<double> const&) (amatrix.cc:35)
+| | |   ->20.49% (5,704,656B) 0x1425A4: Visqol::AudioSignal::AudioSignal(Visqol::AudioSignal const&) (audio_signal.h:27)
+| | |   | ->18.00% (5,013,456B) 0x142D6F: std::_Head_base<0ul, Visqol::AudioSignal, false>::_Head_base<Visqol::AudioSignal&>(Visqol::AudioSignal&) (tuple:133)
+| | |   | | ->17.18% (4,783,056B) 0x142CDA: std::_Tuple_impl<0ul, Visqol::AudioSignal, double>::_Tuple_impl<Visqol::AudioSignal&, double, void>(Visqol::AudioSignal&, double&&) (tuple:218)
+| | |   | | | ->17.18% (4,783,056B) 0x142AD3: std::tuple<Visqol::AudioSignal, double>::tuple<Visqol::AudioSignal&, double, true>(Visqol::AudioSignal&, double&&) (tuple:969)
+| | |   | | |   ->17.18% (4,783,056B) 0x142822: std::tuple<std::__decay_and_strip<Visqol::AudioSignal&>::__type, std::__decay_and_strip<double>::__type> std::make_tuple<Visqol::AudioSignal&, double>(Visqol::AudioSignal&, double&&) (tuple:1474)
+| | |   | | |     ->17.18% (4,783,056B) 0x141B86: Visqol::Alignment::GloballyAlign(Visqol::AudioSignal const&, Visqol::AudioSignal const&) (alignment.cc:96)
+| | |   | | |       ->17.18% (4,783,056B) 0x1386F7: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:156)
+| | |   | | |         ->17.18% (4,783,056B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| | |   | | |           ->17.18% (4,783,056B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | |   | | |             ->17.18% (4,783,056B) 0x12D1B4: main (main.cc:47)
 | | |   | | |               
 | | |   | | ->00.83% (230,400B) in 1+ places, all below ms_print's threshold (01.00%)
 | | |   | | 
 | | |   | ->02.48% (691,200B) in 5 places, all below massif's threshold (1.00%)
 | | |   |   
-| | |   ->01.65% (460,800B) 0x19F7CF: Visqol::ComparisonPatchesSelector::Slice(Visqol::AudioSignal const&, double, double) (comparison_patches_selector.cc:297)
+| | |   ->01.65% (460,800B) 0x19F6C9: Visqol::ComparisonPatchesSelector::Slice(Visqol::AudioSignal const&, double, double) (comparison_patches_selector.cc:297)
 | | |   | ->01.65% (460,800B) in 2 places, all below massif's threshold (1.00%)
 | | |   |   
-| | |   ->01.16% (323,840B) 0x198135: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram const&) (spectrogram.h:29)
+| | |   ->01.16% (323,840B) 0x19802F: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram const&) (spectrogram.h:29)
 | | |   | ->01.16% (323,840B) in 4 places, all below massif's threshold (1.00%)
 | | |   |   
-| | |   ->01.16% (323,840B) 0x1B1C28: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram&&) (spectrogram.h:29)
-| | |   | ->01.16% (323,840B) 0x1B1D41: absl::lts_2020_09_23::internal_statusor::StatusOrData<Visqol::Spectrogram>::StatusOrData<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor_internal.h:204)
-| | |   |   ->01.16% (323,840B) 0x1B1B3B: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor.h:655)
-| | |   |     ->01.16% (323,840B) 0x1B18C3: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram, 0>(Visqol::Spectrogram&&) (statusor.h:440)
-| | |   |       ->01.16% (323,840B) 0x1B05FF: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:99)
+| | |   ->01.16% (323,840B) 0x1B1B22: Visqol::Spectrogram::Spectrogram(Visqol::Spectrogram&&) (spectrogram.h:29)
+| | |   | ->01.16% (323,840B) 0x1B1C3B: absl::lts_2020_09_23::internal_statusor::StatusOrData<Visqol::Spectrogram>::StatusOrData<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor_internal.h:204)
+| | |   |   ->01.16% (323,840B) 0x1B1A35: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram>(absl::lts_2020_09_23::in_place_t, Visqol::Spectrogram&&) (statusor.h:655)
+| | |   |     ->01.16% (323,840B) 0x1B17BD: absl::lts_2020_09_23::StatusOr<Visqol::Spectrogram>::StatusOr<Visqol::Spectrogram, 0>(Visqol::Spectrogram&&) (statusor.h:440)
+| | |   |       ->01.16% (323,840B) 0x1B04F9: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:99)
 | | |   |         ->01.16% (323,840B) in 4 places, all below massif's threshold (1.00%)
 | | |   |           
 | | |   ->00.61% (169,728B) in 1+ places, all below ms_print's threshold (01.00%)
 | | |   
-| | ->03.56% (992,512B) 0x14F3BA: arma::Mat<double>::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
-| | | ->03.55% (989,952B) 0x147477: Visqol::AMatrix<double>::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
-| | | | ->03.53% (983,040B) 0x1B2D78: Visqol::GammatoneFilterBank::ApplyFilter(std::valarray<double> const&) (gammatone_filterbank.cc:58)
-| | | | | ->03.53% (983,040B) 0x1B03E1: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:76)
-| | | | |   ->03.53% (983,040B) 0x19FC59: Visqol::ComparisonPatchesSelector::FinelyAlignAndRecreatePatches(std::vector<Visqol::PatchSimilarityResult, std::allocator<Visqol::PatchSimilarityResult> > const&, Visqol::AudioSignal const&, Visqol::AudioSignal const&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&) const (comparison_patches_selector.cc:344)
-| | | | |   | ->03.53% (983,040B) 0x19656D: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:94)
-| | | | |   |   ->03.53% (983,040B) 0x1387DD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
-| | | | |   |     ->03.53% (983,040B) 0x138375: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
-| | | | |   |       ->03.53% (983,040B) 0x1380EF: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
-| | | | |   |         ->03.53% (983,040B) 0x12D194: main (main.cc:47)
+| | ->03.56% (992,512B) 0x14F386: arma::Mat<double>::Mat(unsigned long long, unsigned long long) (Mat_meat.hpp:68)
+| | | ->03.55% (989,952B) 0x147531: Visqol::AMatrix<double>::AMatrix(unsigned long, unsigned long) (amatrix.cc:103)
+| | | | ->03.53% (983,040B) 0x1B2C72: Visqol::GammatoneFilterBank::ApplyFilter(std::valarray<double> const&) (gammatone_filterbank.cc:58)
+| | | | | ->03.53% (983,040B) 0x1B02DB: Visqol::GammatoneSpectrogramBuilder::Build(Visqol::AudioSignal const&, Visqol::AnalysisWindow const&) (gammatone_spectrogram_builder.cc:76)
+| | | | |   ->03.53% (983,040B) 0x19FB53: Visqol::ComparisonPatchesSelector::FinelyAlignAndRecreatePatches(std::vector<Visqol::PatchSimilarityResult, std::allocator<Visqol::PatchSimilarityResult> > const&, Visqol::AudioSignal const&, Visqol::AudioSignal const&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&) const (comparison_patches_selector.cc:344)
+| | | | |   | ->03.53% (983,040B) 0x196467: Visqol::Visqol::CalculateSimilarity(Visqol::AudioSignal const&, Visqol::AudioSignal&, Visqol::SpectrogramBuilder*, Visqol::AnalysisWindow const&, Visqol::ImagePatchCreator const*, Visqol::ComparisonPatchesSelector const*, Visqol::SimilarityToQualityMapper const*, int) const (visqol.cc:94)
+| | | | |   |   ->03.53% (983,040B) 0x1387FD: Visqol::VisqolManager::Run(Visqol::AudioSignal const&, Visqol::AudioSignal&) (visqol_manager.cc:165)
+| | | | |   |     ->03.53% (983,040B) 0x138395: Visqol::VisqolManager::Run(Visqol::FilePath const&, Visqol::FilePath const&) (visqol_manager.cc:142)
+| | | | |   |       ->03.53% (983,040B) 0x13810F: Visqol::VisqolManager::Run(std::vector<Visqol::ReferenceDegradedPathPair, std::allocator<Visqol::ReferenceDegradedPathPair> > const&) (visqol_manager.cc:113)
+| | | | |   |         ->03.53% (983,040B) 0x12D1B4: main (main.cc:47)
 | | | | |   |           
 | | | | |   ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | | | | |   
@@ -687,12 +501,12 @@ Number of snapshots: 76
 | | 
 | ->00.00% (0B) in 1+ places, all below ms_print's threshold (01.00%)
 | 
-->01.18% (327,344B) 0x1598CB: double* std::__valarray_get_storage<double>(unsigned long) (valarray_array.h:58)
+->01.18% (327,344B) 0x1598F5: double* std::__valarray_get_storage<double>(unsigned long) (valarray_array.h:58)
 | ->01.18% (327,344B) in 6 places, all below massif's threshold (1.00%)
 |   
-->01.11% (309,347B) in 76 places, all below massif's threshold (1.00%)
+->01.11% (309,347B) in 77 places, all below massif's threshold (1.00%)
   
 --------------------------------------------------------------------------------
   n        time(i)         total(B)   useful-heap(B) extra-heap(B)    stacks(B)
 --------------------------------------------------------------------------------
- 75 527,588,372,202       27,816,040       27,809,619         6,421            0
+ 59 528,645,049,835       27,846,776       27,840,355         6,421            0

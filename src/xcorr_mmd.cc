@@ -101,6 +101,7 @@ mmd::MmdVector<double> XCorrMmd::CalcInverseFFTPwiseProd(
   AMatrix<double> sig1_matrix(signal_1.size(), 1, signal_1);
   auto f1d = FastFourierTransformMmd::Forward1d(fft_manager, sig1_matrix, fft_points);
   auto pwp = f1d->PointWiseProduct(fftsignal_2);
+  std::cout<<"PPW: "<<pwp->NumElements()<<std::endl;
   delete f1d;
   delete fftsignal_2;
   return pwp;
