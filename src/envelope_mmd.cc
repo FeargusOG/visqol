@@ -35,7 +35,7 @@ AMatrix<double> EnvelopeMmd::CalcUpperEnv(const AMatrix<double> &signal) {
     hilbert_amp(i) = std::abs(hilbert->operator()(i));
   }
   delete hilbert;
-  return hilbert_amp + mean;
+  return hilbert_amp + mean; //FOG Fix here.... Its about 12%
 }
 
 AMatrix<std::complex<double>>* EnvelopeMmd::Hilbert(const AMatrix<double> &signal) {
