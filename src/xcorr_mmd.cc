@@ -51,20 +51,20 @@ int64_t XCorrMmd::CalcBestLag(const AMatrix<double>& signal_1,
 
 mmd::MmdVector<double> XCorrMmd::CalcInverseFFTPwiseProd(
     const AMatrix<double>& signal_1, const AMatrix<double>& signal_2) {
-  std::vector<double> signal_1_vec = signal_1.ToVector();
-  std::vector<double> signal_2_vec = signal_2.ToVector();
+  mmd::MmdVector<double> signal_1_vec{signal_1.ToVector()};
+  mmd::MmdVector<double> signal_2_vec{signal_2.ToVector()};
 
   // Add zeros until they're both the same length.
-  // Reserve then resize to prevent extraneous memory being allocated.
-  // Resize by itself can double the vector capacity.
-  const size_t biggest_vec = signal_1.NumRows() > signal_2.NumRows() ?
-      signal_1.NumRows() : signal_2.NumRows();
-  if (signal_1.NumRows() > signal_2.NumRows()) {
-    signal_2_vec.reserve(biggest_vec);
-    signal_2_vec.resize(biggest_vec, 0.0);
-  } else if (signal_1.NumRows() < signal_2.NumRows()) {
-    signal_1_vec.reserve(biggest_vec);
-    signal_1_vec.resize(biggest_vec, 0.0);
+  if (signal_1.NumRows() < signal_2.NumRows()) {
+    size_t padding = signal_2.NumRows() - signal_1.NumRows();
+    for (size_t i = 0; i < padding; i++){
+      signal_1_vec.push_back(0.0);
+    }
+  } else {
+    auto padding = signal_1.NumRows() - signal_2.NumRows();
+    for (size_t i = 0; i < padding; i++){
+      signal_2_vec.push_back(0.0);
+    }
   }
 
   // Calculate how many points in FFT (next ^2 elements)
@@ -87,17 +87,19 @@ mmd::MmdVector<double> XCorrMmd::CalcInverseFFTPwiseProd(
 }
 
   AMatrix<std::complex<double>>* XCorrMmd::CalcFFTPwiseProd(
-    const std::vector<double> &signal_1, const std::vector<double> &signal_2,
+    const mmd::MmdVector<double> &signal_1, const mmd::MmdVector<double> &signal_2,
     const std::unique_ptr<FftManager>& fft_manager, const size_t fft_points) {
 
+  AMatrix<double> sig2_matrix(signal_2.size(), 1, signal_2);
   auto fftsignal_2 = FastFourierTransformMmd::Forward1d(fft_manager,
-                                                signal_2,
+                                                sig2_matrix,
                                                 fft_points);
   std::transform(fftsignal_2->begin(), fftsignal_2->end(),
             fftsignal_2->begin(), [](decltype(*fftsignal_2->begin())& s)
             { return conj(s); });
 
-  auto f1d = FastFourierTransformMmd::Forward1d(fft_manager, signal_1, fft_points);
+  AMatrix<double> sig1_matrix(signal_1.size(), 1, signal_1);
+  auto f1d = FastFourierTransformMmd::Forward1d(fft_manager, sig1_matrix, fft_points);
   auto pwp = f1d->PointWiseProduct(fftsignal_2);
   delete f1d;
   delete fftsignal_2;

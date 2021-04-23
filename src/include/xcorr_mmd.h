@@ -76,7 +76,7 @@ class XCorrMmd {
    * @return The pointwise product of the two signal's forward fft.
    */
   static AMatrix<std::complex<double>>* CalcFFTPwiseProd(
-      const std::vector<double> &signal_1, const std::vector<double> &signal_2,
+      const mmd::MmdVector<double> &signal_1, const mmd::MmdVector<double> &signal_2,
       const std::unique_ptr<FftManager>& fft_manager, const size_t fft_points);
 };
 }  // namespace Visqol
