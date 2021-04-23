@@ -47,7 +47,7 @@ class AMatrix {
   AMatrix<T>(const arma::Mat<T> &mat);
   AMatrix<T>(const AMatrix<T> &other);
   AMatrix<T>(const std::vector<T> &col);
-  AMatrix<T>(const std::vector<T> &col, const bool use_memory_mapping);
+  //AMatrix<T>(const std::vector<T> &col, const bool use_memory_mapping);
   AMatrix<T>(const absl::Span<T>& col);
   AMatrix<T>(const std::valarray<T> &va);
   AMatrix<T>(const std::vector<std::vector<T>> &vecOfCols);
@@ -55,6 +55,7 @@ class AMatrix {
   AMatrix<T>(size_t rows, size_t cols);
   AMatrix<T>(size_t rows, size_t cols, std::vector<T> &&data);
   AMatrix<T>(size_t rows, size_t cols, const std::vector<T> &data);
+  AMatrix<T>(size_t rows, size_t cols, const mmd::MmdVector<T> &data);
   AMatrix<T>(arma::Mat<T> &&matrix);  // could this be private?
   T &operator()(size_t row, size_t column);
   T operator()(size_t row, size_t column) const;
@@ -71,6 +72,7 @@ class AMatrix {
   static AMatrix<T> Filled(size_t rows, size_t cols, T initialValue);
 
   AMatrix<T> PointWiseProduct(const AMatrix<T> &m) const;
+  AMatrix<T>* PointWiseProduct(const AMatrix<T>* m) const;
   AMatrix<T> PointWiseDivide(const AMatrix<T> &m) const;
   AMatrix<T> Transpose() const;
   AMatrix<double> Abs() const;

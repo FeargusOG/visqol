@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "xcorr.h"
+#include "xcorr_mmd.h"
 
 #include <math.h>
 
@@ -20,27 +20,28 @@
 #include <complex>
 #include <memory>
 #include <utility>
-#include <vector>
+#include <mmd-vector.h>
 #include <iostream>
 #include "absl/memory/memory.h"
 
 #include "amatrix.h"
-#include "fast_fourier_transform.h"
+#include "fast_fourier_transform_mmd.h"
 
 namespace Visqol {
 
 // Assumes inputs are column vectors
-int64_t XCorr::CalcBestLag(const AMatrix<double>& signal_1,
+int64_t XCorrMmd::CalcBestLag(const AMatrix<double>& signal_1,
                            const AMatrix<double>& signal_2) {
   const int64_t max_lag = std::max(static_cast<int64_t>(signal_1.NumRows()),
       static_cast<int64_t>(signal_2.NumRows())) - 1;
 
   auto pwise_fft_vec = CalcInverseFFTPwiseProd(signal_1, signal_2);
   // Build negatives corrs.
-  std::vector<double> corrs{pwise_fft_vec.end() - max_lag, pwise_fft_vec.end()};
+  std::vector<double> corrs{pwise_fft_vec.get_mapped_vector()->end() - max_lag, pwise_fft_vec.get_mapped_vector()->end()};
   // Build positive corrs.
-  std::vector<double> positives{pwise_fft_vec.begin(),
-                                pwise_fft_vec.begin() + max_lag + 1};
+  std::vector<double> positives{pwise_fft_vec.get_mapped_vector()->begin(),
+                                pwise_fft_vec.get_mapped_vector()->begin() + max_lag + 1};
+
   // Build total corrs.
   corrs.insert(corrs.end(), positives.begin(), positives.end());
   // Find best corr and from that the best lag.
@@ -48,7 +49,7 @@ int64_t XCorr::CalcBestLag(const AMatrix<double>& signal_1,
   return std::distance(corrs.cbegin(), best_corr) - max_lag;
 }
 
-std::vector<double> XCorr::CalcInverseFFTPwiseProd(
+mmd::MmdVector<double> XCorrMmd::CalcInverseFFTPwiseProd(
     const AMatrix<double>& signal_1, const AMatrix<double>& signal_2) {
   std::vector<double> signal_1_vec = signal_1.ToVector();
   std::vector<double> signal_2_vec = signal_2.ToVector();
@@ -73,26 +74,34 @@ std::vector<double> XCorr::CalcInverseFFTPwiseProd(
 
   // Calculate the pointwise product of the forward fft of both signals.
   auto fft_manager = absl::make_unique<FftManager>(fft_points);
-  auto pwise_prod = CalcFFTPwiseProd(signal_1_vec, signal_2_vec, fft_manager,
-      fft_points);
 
-  return FastFourierTransform::Inverse1dConjSym(fft_manager, pwise_prod)
-      .ToVector();
+  auto pwise_prod = CalcFFTPwiseProd(signal_1_vec, signal_2_vec, fft_manager,
+    fft_points);
+
+  // FOG instead of calling ToVector, can I just return the inner vector and allow it to be copied by the mmd-vector copy-ctor??
+  auto i1d =  FastFourierTransformMmd::Inverse1dConjSym(fft_manager, *pwise_prod);
+  auto vec = i1d->ToVector();
+  delete pwise_prod;
+  delete i1d;
+  return vec;
 }
 
-AMatrix<std::complex<double>> XCorr::CalcFFTPwiseProd(
+  AMatrix<std::complex<double>>* XCorrMmd::CalcFFTPwiseProd(
     const std::vector<double> &signal_1, const std::vector<double> &signal_2,
     const std::unique_ptr<FftManager>& fft_manager, const size_t fft_points) {
-  auto fftsignal_2 = FastFourierTransform::Forward1d(fft_manager,
-                                                     signal_2,
-                                                     fft_points);
-  std::transform(fftsignal_2.begin(), fftsignal_2.end(),
-                 fftsignal_2.begin(), [](decltype(*fftsignal_2.begin())& s)
-                 { return conj(s); });
+
+  auto fftsignal_2 = FastFourierTransformMmd::Forward1d(fft_manager,
+                                                signal_2,
+                                                fft_points);
+  std::transform(fftsignal_2->begin(), fftsignal_2->end(),
+            fftsignal_2->begin(), [](decltype(*fftsignal_2->begin())& s)
+            { return conj(s); });
 
   // FOG TODO Here is one location - the PointWiseProduct function allocs a new one.
-  auto pwp = FastFourierTransform::Forward1d(fft_manager, signal_1, fft_points)
-      .PointWiseProduct(fftsignal_2);
+  auto f1d = FastFourierTransformMmd::Forward1d(fft_manager, signal_1, fft_points);
+  auto pwp = f1d->PointWiseProduct(fftsignal_2);
+  delete f1d;
+  delete fftsignal_2;
   return pwp;
 }
 

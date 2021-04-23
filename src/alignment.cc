@@ -21,6 +21,7 @@
 #include "audio_signal.h"
 #include "envelope.h"
 #include "xcorr.h"
+#include "xcorr_mmd.h"
 
 namespace Visqol {
 std::tuple<AudioSignal, AudioSignal, double> Alignment::AlignAndTruncate(
@@ -60,7 +61,16 @@ std::tuple<AudioSignal, double> Alignment::GloballyAlign(
   auto &deg_matrix = deg_signal.data_matrix;
   auto ref_upper_env = Envelope::CalcUpperEnv(ref_matrix);
   auto deg_upper_env = Envelope::CalcUpperEnv(deg_matrix);
-  auto best_lag = XCorr::CalcBestLag(ref_upper_env, deg_upper_env);
+
+  // FOG - right here is the route of all evil lol
+  int64_t best_lag;
+  if(ref_matrix.NumElements() >= 597784){
+    //std::cout<<"Gonna use MMD!"<<std::endl;
+    best_lag = XCorrMmd::CalcBestLag(ref_upper_env, deg_upper_env);
+    //best_lag = XCorr::CalcBestLag(ref_upper_env, deg_upper_env);
+  } else {
+    best_lag = XCorr::CalcBestLag(ref_upper_env, deg_upper_env);
+  }
 
   // Limit the lag to half a patch.
   if (best_lag == 0 || std::abs(best_lag) > (double) ref_matrix.NumRows() / 2) {

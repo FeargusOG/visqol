@@ -45,12 +45,12 @@ inline AMatrix<T>::AMatrix(const std::vector<T>& col) {
   matrix_ = arma::Mat<T>(col);
 }
 
-template <typename T>
-inline AMatrix<T>::AMatrix(const std::vector<T>& col, const bool use_memory_mapping) : vec_{new mmd::MmdVector<T>{col}} , matrix_{vec_->get_memory(), col.size(), 1, false, true} {
-  std::cout<<"Using memory mapping!"<<std::endl;
-  std::cout<<"Vec file size: "<<vec_->get_file_size()<<std::endl;
-  std::cout<<"Vec file path: "<<vec_->get_file_path()<<std::endl;
-}
+// template <typename T>
+// inline AMatrix<T>::AMatrix(const std::vector<T>& col, const bool use_memory_mapping) : vec_{new mmd::MmdVector<T>{col}} , matrix_{vec_->get_memory(), col.size(), 1, false, true} {
+//   std::cout<<"Vec file size: "<<vec_->get_file_size()<<std::endl;
+//   std::cout<<"Vec file path: "<<vec_->get_file_path()<<std::endl;
+//   std::cout<<"Using memory mapping - ctor 1!!"<<std::endl;
+// }
 
 template <typename T>
 inline AMatrix<T>::AMatrix(const std::size_t mmd_size) : vec_{new mmd::MmdVector<T>{mmd_size}} , matrix_{vec_->get_memory(), mmd_size, 1, false, true} {
@@ -87,9 +87,15 @@ inline AMatrix<T>::AMatrix(size_t rows, size_t cols, std::vector<T>&& data) {
 }
 
 template <typename T>
-inline AMatrix<T>::AMatrix(size_t rows, size_t cols,
-    const std::vector<T>& data) {
+inline AMatrix<T>::AMatrix(size_t rows, size_t cols, const std::vector<T>& data) {
   matrix_ = arma::Mat<T>(&data[0], (arma::uword)rows, (arma::uword)cols);
+}
+
+template <typename T>
+inline AMatrix<T>::AMatrix(size_t rows, size_t cols, const mmd::MmdVector<T>& data) : vec_{new mmd::MmdVector<T>{data}} , matrix_{vec_->get_memory(), rows, cols, false, true} {
+  std::cout<<"Vec file size: "<<vec_->get_file_size()<<std::endl;
+  std::cout<<"Vec file path: "<<vec_->get_file_path()<<std::endl;
+  std::cout<<"Using memory mapping - ctor 3!!"<<std::endl;
 }
 
 template <typename T>
@@ -185,6 +191,11 @@ inline AMatrix<T> AMatrix<T>::operator-(const AMatrix<T>& m) const {
 template <typename T>
 inline AMatrix<T> AMatrix<T>::PointWiseProduct(const AMatrix<T>& m) const {
   return AMatrix<T>(std::move(matrix_ % m.matrix_));
+}
+
+template <typename T>
+inline AMatrix<T>* AMatrix<T>::PointWiseProduct(const AMatrix<T>* m) const {
+  return new AMatrix<T>(std::move(matrix_ % m->matrix_));
 }
 
 template <typename T>
