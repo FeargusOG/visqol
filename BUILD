@@ -112,6 +112,7 @@ test_suite(
     name = "all_unit_tests",
     tests = [
         "alignment_test",
+        "amatrix_test",
         "analysis_window_test",
         "commandline_parser_test",
         "comparison_patches_selector_test",
@@ -347,6 +348,16 @@ cc_test(
     name = "misc_math_test",
     size = "small",
     srcs = ["tests/misc_math_test.cc"],
+    deps = [
+        ":visqol_lib",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
+cc_test(
+    name = "amatrix_test",
+    size = "small",
+    srcs = ["tests/amatrix_test.cc"],
     deps = [
         ":visqol_lib",
         "@com_google_googletest//:gtest_main",
