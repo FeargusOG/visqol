@@ -67,7 +67,9 @@ std::tuple<AudioSignal, double> Alignment::GloballyAlign(
   if(ref_matrix.NumElements() >= 597784){
     auto ref_upper_env = EnvelopeMmd::CalcUpperEnv(ref_matrix);
     auto deg_upper_env = EnvelopeMmd::CalcUpperEnv(deg_matrix);
-    best_lag = XCorrMmd::CalcBestLag(ref_upper_env, deg_upper_env);
+    best_lag = XCorrMmd::CalcBestLag(*ref_upper_env, *deg_upper_env);
+    delete ref_upper_env;
+    delete deg_upper_env;
   } else {
     auto ref_upper_env = Envelope::CalcUpperEnv(ref_matrix);
     auto deg_upper_env = Envelope::CalcUpperEnv(deg_matrix);

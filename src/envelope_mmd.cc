@@ -25,7 +25,7 @@
 #include "misc_vector.h"
 
 namespace Visqol {
-AMatrix<double> EnvelopeMmd::CalcUpperEnv(const AMatrix<double> &signal) {
+AMatrix<double>* EnvelopeMmd::CalcUpperEnv(const AMatrix<double> &signal) {
   double mean = MiscVector::Mean(signal);
   const auto signal_centered = signal - mean;
   AMatrix<std::complex<double>>* hilbert = Hilbert(signal_centered);
@@ -35,7 +35,7 @@ AMatrix<double> EnvelopeMmd::CalcUpperEnv(const AMatrix<double> &signal) {
     hilbert_amp(i) = std::abs(hilbert->operator()(i));
   }
   delete hilbert;
-  return hilbert_amp + mean; //FOG Fix here.... Its about 12%
+  return hilbert_amp + &mean; //FOG Fix here.... Its about 12%
 }
 
 AMatrix<std::complex<double>>* EnvelopeMmd::Hilbert(const AMatrix<double> &signal) {
