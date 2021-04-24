@@ -105,6 +105,8 @@ AudioSignal MiscAudio::LoadAsMono(std::stringstream *string_stream,
   AudioSignal sig;
   WavReader wav_reader(string_stream);
   const size_t num_total_samples = wav_reader.GetNumTotalSamples();
+  std::cout<<"num_total_samples: "<<num_total_samples<<std::endl;
+  std::cout<<"num_total_samples / wav_reader.GetNumChannels(): "<<num_total_samples / wav_reader.GetNumChannels()<<std::endl;
 
   if (wav_reader.IsHeaderValid() && num_total_samples != 0) {
     std::vector<int16_t> interleaved_samples(num_total_samples);
@@ -132,9 +134,12 @@ AudioSignal MiscAudio::LoadAsMono(std::stringstream *string_stream,
       //    That could really slow down overall execution.
       //    Make the change, test the speed difference and 
       //    make a call on whether the saving is worth it.
-      sig.data_matrix = outMat;
+      std::cout<<"outMat.NumElements(): "<<outMat.NumElements()<<std::endl;
+      //sig.data_matrix = outMat;
       sig.sample_rate = wav_reader.GetSampleRateHz();
-      sig = MiscAudio::ToMono(sig);
+      //sig = MiscAudio::ToMono(sig);
+      sig.data_matrix = MiscAudio::ToMono(outMat); // FOG! So here we are, instantiate the sig.data_matrix with a size of num_total_samples / wav_reader.GetNumChannels() and copy in the stuff!!
+      std::cout<<"sig.data_matrix.NumElements(): "<<sig.data_matrix.NumElements()<<std::endl;
     } else {
       if (filepath.has_value()) {
         ABSL_RAW_LOG(ERROR, "Error reading data for file %s.",
