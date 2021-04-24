@@ -169,6 +169,19 @@ inline AMatrix<T> AMatrix<T>::operator+(T v) const {
 }
 
 template <typename T>
+inline AMatrix<T>* AMatrix<T>::operator+(const T* v) const {
+  //double copy_v = v;
+  auto plus_mat = new AMatrix<T>(this->NumRows(), this->NumCols(), mmd::MmdVector<T>{this->NumRows()*this->NumCols()});
+  for (size_t col = 0; col < this->NumCols(); col++) {
+    for (size_t row = 0; row < this->NumRows(); row++) {
+      plus_mat->operator()(row, col) = this->operator()(row, col) + *v;
+    }
+  }
+  
+  return plus_mat;
+}
+
+template <typename T>
 inline AMatrix<T> AMatrix<T>::operator*(T v) const {
   return AMatrix<T>(matrix_ * v);
 }
@@ -195,7 +208,7 @@ inline AMatrix<T> AMatrix<T>::PointWiseProduct(const AMatrix<T>& m) const {
 
 template <typename T>
 inline AMatrix<T>* AMatrix<T>::PointWiseProduct(const AMatrix<T>* m) const {
-  // Assume 1 col, though we could do multiple...
+  // Bounds checking on input! Maybe fill with 1s if too small.
   auto pwp = new AMatrix<T>(this->NumRows(), this->NumCols(), mmd::MmdVector<T>{this->NumRows()*this->NumCols()});
   for (size_t col = 0; col < this->NumCols(); col++) {
     for (size_t row = 0; row < this->NumRows(); row++) {

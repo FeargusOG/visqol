@@ -20,6 +20,70 @@
 namespace Visqol {
 namespace {
 
+TEST(AMatrix, OperatorPlusTRef) {
+  const double kVal = 2.0;  
+  const size_t kRows = 2;
+  const size_t kCols = 2;
+  const std::vector<double> inputs = {kVal, kVal, kVal, kVal};
+
+  // Create the original matrix.
+  AMatrix<double> mat{kRows, kCols, inputs};
+
+  // Ensure the original matrix is correct.
+  EXPECT_EQ(inputs.size(), mat.NumElements());
+  EXPECT_EQ(kRows, mat.NumRows());
+  EXPECT_EQ(kCols, mat.NumCols());
+  for (auto it = mat.cbegin(); it != mat.cend(); it++)
+  {
+    EXPECT_DOUBLE_EQ(kVal, *it);
+  }
+
+  // Plus T
+  auto plus_t = mat + kVal;
+
+  // Ensure that every element in the new matrix is the old value plus the kVal.
+  EXPECT_EQ(inputs.size(), plus_t.NumElements());
+  EXPECT_EQ(kRows, plus_t.NumRows());
+  EXPECT_EQ(kCols, plus_t.NumCols());
+  for (auto it = plus_t.cbegin(); it != plus_t.cend(); it++)
+  {
+    EXPECT_DOUBLE_EQ(kVal + kVal, *it);
+  }
+}
+
+TEST(AMatrix, OperatorPlusTPtr) {
+  const double kVal = 2.0;  
+  const size_t kRows = 2;
+  const size_t kCols = 2;
+  const std::vector<double> inputs = {kVal, kVal, kVal, kVal};
+
+  // Create the original matrix.
+  AMatrix<double> mat{kRows, kCols, inputs};
+
+  // Ensure the original matrix is correct.
+  EXPECT_EQ(inputs.size(), mat.NumElements());
+  EXPECT_EQ(kRows, mat.NumRows());
+  EXPECT_EQ(kCols, mat.NumCols());
+  for (auto it = mat.cbegin(); it != mat.cend(); it++)
+  {
+    EXPECT_DOUBLE_EQ(kVal, *it);
+  }
+
+  // Plus T
+  auto plus_t = mat + &kVal;
+
+  // Ensure that every element in the new matrix is the old value plus the kVal.
+  EXPECT_EQ(inputs.size(), plus_t->NumElements());
+  EXPECT_EQ(kRows, plus_t->NumRows());
+  EXPECT_EQ(kCols, plus_t->NumCols());
+  for (auto it = plus_t->cbegin(); it != plus_t->cend(); it++)
+  {
+    EXPECT_DOUBLE_EQ(kVal + kVal, *it);
+  }
+
+  delete plus_t;
+}
+
 TEST(AMatrix, PointWiseProductRef) {
   const double kVal = 2.0;  
   const size_t kRows = 2;

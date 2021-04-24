@@ -65,6 +65,7 @@ class AMatrix {
   AMatrix<T> &operator=(const AMatrix<T> &other);
   AMatrix<T> operator+(const AMatrix<T> &other) const;
   AMatrix<T> operator+(T v) const;
+  AMatrix<T>* operator+(const T* v) const;
   AMatrix<T> operator*(T v) const;
   AMatrix<T> operator-(T v) const;
   AMatrix<T> operator/(T v) const;
