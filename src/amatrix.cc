@@ -196,11 +196,13 @@ inline AMatrix<T> AMatrix<T>::PointWiseProduct(const AMatrix<T>& m) const {
 template <typename T>
 inline AMatrix<T>* AMatrix<T>::PointWiseProduct(const AMatrix<T>* m) const {
   // Assume 1 col, though we could do multiple...
-  auto pwp = new AMatrix<T>(this->NumRows());
-  for (size_t i = 0; i < this->NumRows(); i++)
-  {
-    pwp->operator()(i) = this->operator()(i, 0) * m->operator()(i, 0);
+  auto pwp = new AMatrix<T>(this->NumRows(), this->NumCols(), mmd::MmdVector<T>{this->NumRows()*this->NumCols()});
+  for (size_t col = 0; col < this->NumCols(); col++) {
+    for (size_t row = 0; row < this->NumRows(); row++) {
+      pwp->operator()(row, col) = this->operator()(row, col) * m->operator()(row, col);
+    }
   }
+  
   return pwp;
 }
 

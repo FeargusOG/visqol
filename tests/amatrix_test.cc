@@ -21,13 +21,68 @@ namespace Visqol {
 namespace {
 
 TEST(AMatrix, PointWiseProductRef) {
-  std::vector<int> inputs = {4, 2, 2, 2};
-  AMatrix<int> mat(inputs);
-  EXPECT_EQ(inputs.size(), mat.NumElements());
+  const double kVal = 2.0;  
+  const size_t kRows = 2;
+  const size_t kCols = 2;
+  const std::vector<double> inputs = {kVal, kVal, kVal, kVal};
 
-  // for (size_t i = 0; i < inputs.size(); ++i) {
-  //   EXPECT_EQ(expected[i], MiscMath::NextPowTwo(inputs[i]));
-  // }
+  // Create the original matrix.
+  AMatrix<double> mat{kRows, kCols, inputs};
+
+  // Ensure the original matrix is correct.
+  EXPECT_EQ(inputs.size(), mat.NumElements());
+  EXPECT_EQ(kRows, mat.NumRows());
+  EXPECT_EQ(kCols, mat.NumCols());
+  for (auto it = mat.cbegin(); it != mat.cend(); it++)
+  {
+    EXPECT_DOUBLE_EQ(kVal, *it);
+  }
+
+  // Multiply the original matrix by itself.
+  auto ppw = mat.PointWiseProduct(mat);
+
+  // Ensure the point wise product matrix is correct.
+  EXPECT_EQ(inputs.size(), ppw.NumElements());
+  EXPECT_EQ(kRows, ppw.NumRows());
+  EXPECT_EQ(kCols, ppw.NumCols());
+  for (auto it = ppw.cbegin(); it != ppw.cend(); it++)
+  {
+    EXPECT_DOUBLE_EQ(kVal * kVal, *it);
+  }
+}
+
+TEST(AMatrix, PointWiseProductPtr) {
+  const double kVal = 2.0;  
+  const size_t kRows = 2;
+  const size_t kCols = 2;
+  const std::vector<double> inputs = {kVal, kVal, kVal, kVal};
+
+  // Create the original matrix.
+  AMatrix<double>* mat = new AMatrix<double>{kRows, kCols, inputs};
+
+  // Ensure the original matrix is correct.
+  EXPECT_EQ(inputs.size(), mat->NumElements());
+  EXPECT_EQ(kRows, mat->NumRows());
+  EXPECT_EQ(kCols, mat->NumCols());
+  for (auto it = mat->cbegin(); it != mat->cend(); it++)
+  {
+    EXPECT_DOUBLE_EQ(kVal, *it);
+  }
+
+  // Multiply the original matrix by itself.
+  auto ppw = mat->PointWiseProduct(mat);
+
+  // Ensure the point wise product matrix is correct.
+  EXPECT_EQ(inputs.size(), ppw->NumElements());
+  EXPECT_EQ(kRows, ppw->NumRows());
+  EXPECT_EQ(kCols, ppw->NumCols());
+  for (auto it = ppw->cbegin(); it != ppw->cend(); it++)
+  {
+    EXPECT_DOUBLE_EQ(kVal * kVal, *it);
+  }
+
+  delete mat;
+  delete ppw;
 }
 
 }  // namespace
