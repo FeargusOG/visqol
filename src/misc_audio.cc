@@ -126,12 +126,12 @@ AudioSignal MiscAudio::LoadAsMono(std::stringstream *string_stream,
           wav_reader.GetNumChannels(), interleaved_norm_vec);
 
       const AMatrix<double> outMat(multi_chan_norm_vec);
-      //FOG Right here, another 24% of peak...
+      //FOG Right here, another big % of peak...
       //    My only concern for this one is we would
       //    be making the main audio signals mmd...
       //    That could really slow down overall execution.
       //    Make the change, test the speed difference and 
-      //    make a call on whether the 14% saving is worth it.
+      //    make a call on whether the saving is worth it.
       sig.data_matrix = outMat;
       sig.sample_rate = wav_reader.GetSampleRateHz();
       sig = MiscAudio::ToMono(sig);
